@@ -1,0 +1,153 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+conda-env/
+*.egg-info/
+build/
+dist/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Data files
+# Keep only README files under data/
+# =========================
+data/*
+!data/README.md
+
+datasets/
+raw_data/
+processed_data/
+external_data/
+
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.mat
+*.bin
+
+# Common dataset archives
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.rar
+*.7z
+*.gz
+
+# =========================
+# Model checkpoints
+# Keep only README files under checkpoints/
+# =========================
+checkpoints/*
+!checkpoints/README.md
+
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+*.pb
+*.joblib
+
+# =========================
+# Logs and experiment outputs
+# Keep only README files under logs/
+# =========================
+logs/*
+!logs/README.md
+
+runs/
+wandb/
+tensorboard/
+lightning_logs/
+mlruns/
+
+*.log
+
+# =========================
+# LaTeX intermediate files
+# Do NOT ignore PDF, because formal deliverables may include compiled PDFs.
+# =========================
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+*.xdv
+*.nav
+*.snm
+*.vrb
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+
+# =========================
+# IDE and editor
+# =========================
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+temp/
+.cache/
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# =========================
+# Local configs and secrets
+# =========================
+.env
+.env.*
+*.secret
+secrets/
