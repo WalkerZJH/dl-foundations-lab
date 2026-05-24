@@ -1,0 +1,8 @@
+Assignment 1 experiment log
+X_train=(2000, 3, 32, 32), X_val=(500, 3, 32, 32), X_test=(500, 3, 32, 32)
+kNN uses full current subset: train=2000, val=500, test=500
+kNN: setting=k=7, train=2000, val=500, test=500, val_acc=0.2800, test_acc=0.2320
+Softmax: setting=lr=1e-7, reg=2.5e4, iters=500, val_acc=0.3080, test_acc=0.2960
+TwoLayerNet: setting=sgd_momentum, lr=0.001, epochs=3, val_acc=0.2820, test_acc=0.2760
+FullyConnectedNet: setting=adam, lr=0.001, epochs=3, val_acc=0.2860, test_acc=0.2320
+elapsed_seconds=2.88

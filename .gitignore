@@ -40,6 +40,11 @@ raw_data/
 processed_data/
 external_data/
 
+# Assignment 1 keeps the dataset download script, but not downloaded data.
+!units/assignment1/code/cs231n/datasets/
+units/assignment1/code/cs231n/datasets/*
+!units/assignment1/code/cs231n/datasets/get_datasets.sh
+
 *.npy
 *.npz
 *.pkl
@@ -72,6 +77,11 @@ checkpoints/*
 *.onnx
 *.pb
 *.joblib
+
+# Local model saves produced by Assignment 1 experiments.
+units/assignment1/code/cs231n/saved/*
+!units/assignment1/code/cs231n/saved/keep.md
+units/assignment1/code/_experiment_outputs/
 
 # =========================
 # Logs and experiment outputs

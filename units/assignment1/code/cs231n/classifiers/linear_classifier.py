@@ -1,0 +1,89 @@
+from __future__ import print_function
+
+from builtins import object
+from builtins import range
+import os
+
+import numpy as np
+
+from ..classifiers.linear_svm import svm_loss_vectorized
+from ..classifiers.softmax import softmax_loss_vectorized
+
+
+class LinearClassifier(object):
+    """Base class for linear classifiers trained with SGD."""
+
+    def __init__(self):
+        self.W = None
+
+    def train(
+        self,
+        X,
+        y,
+        learning_rate=1e-3,
+        reg=1e-5,
+        num_iters=100,
+        batch_size=200,
+        verbose=False,
+    ):
+        """Train this linear classifier using stochastic gradient descent."""
+        num_train, dim = X.shape
+        num_classes = np.max(y) + 1
+        if self.W is None:
+            self.W = 0.001 * np.random.randn(dim, num_classes)
+
+        loss_history = []
+        for it in range(num_iters):
+            batch_indices = np.random.choice(num_train, batch_size, replace=True)
+            X_batch = X[batch_indices]
+            y_batch = y[batch_indices]
+
+            loss, grad = self.loss(X_batch, y_batch, reg)
+            loss_history.append(loss)
+
+            self.W -= learning_rate * grad
+
+            if verbose and it % 100 == 0:
+                print("iteration %d / %d: loss %f" % (it, num_iters, loss))
+
+        return loss_history
+
+    def predict(self, X):
+        """Use the trained weights to predict labels."""
+        return np.argmax(X.dot(self.W), axis=1)
+
+    def loss(self, X_batch, y_batch, reg):
+        """Compute loss and gradient. Subclasses override this method."""
+        pass
+
+    def save(self, fname):
+        """Save model parameters."""
+        fpath = os.path.join(os.path.dirname(__file__), "../saved/", fname)
+        params = {"W": self.W}
+        np.save(fpath, params)
+        print(fname, "saved.")
+
+    def load(self, fname):
+        """Load model parameters."""
+        fpath = os.path.join(os.path.dirname(__file__), "../saved/", fname)
+        if not os.path.exists(fpath):
+            print(fname, "not available.")
+            return False
+        params = np.load(fpath, allow_pickle=True).item()
+        self.W = params["W"]
+        print(fname, "loaded.")
+        return True
+
+
+class LinearSVM(LinearClassifier):
+    """Linear classifier using multiclass SVM loss."""
+
+    def loss(self, X_batch, y_batch, reg):
+        return svm_loss_vectorized(self.W, X_batch, y_batch, reg)
+
+
+class Softmax(LinearClassifier):
+    """Linear classifier using Softmax cross-entropy loss."""
+
+    def loss(self, X_batch, y_batch, reg):
+        return softmax_loss_vectorized(self.W, X_batch, y_batch, reg)

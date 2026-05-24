@@ -1,0 +1,8 @@
+model,setting,train_acc,val_acc,test_acc
+kNN,"k=1, train=2000, val=500, test=500",,0.2500,0.2280
+kNN,"k=3, train=2000, val=500, test=500",,0.2260,0.2400
+kNN,"k=5, train=2000, val=500, test=500",,0.2680,0.2320
+kNN,"k=7, train=2000, val=500, test=500",,0.2800,0.2320
+Softmax,"lr=1e-7, reg=2.5e4, iters=500",0.3410,0.3080,0.2960
+TwoLayerNet,"sgd_momentum, lr=0.001, epochs=3",0.2560,0.2820,0.2760
+FullyConnectedNet,"adam, lr=0.001, epochs=3",0.5700,0.2860,0.2320

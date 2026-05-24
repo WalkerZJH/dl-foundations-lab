@@ -1,0 +1,62 @@
+{
+  "dataset": {
+    "name": "CIFAR-10",
+    "train": 2000,
+    "validation": 500,
+    "test": 500,
+    "knn_sampling": "none; kNN uses the full current subset"
+  },
+  "results": [
+    {
+      "model": "kNN",
+      "setting": "k=7, train=2000, val=500, test=500",
+      "train_acc": null,
+      "val_acc": 0.28,
+      "test_acc": 0.232
+    },
+    {
+      "model": "Softmax",
+      "setting": "lr=1e-7, reg=2.5e4, iters=500",
+      "train_acc": 0.341,
+      "val_acc": 0.308,
+      "test_acc": 0.296
+    },
+    {
+      "model": "TwoLayerNet",
+      "setting": "sgd_momentum, lr=0.001, epochs=3",
+      "train_acc": 0.256,
+      "val_acc": 0.282,
+      "test_acc": 0.276
+    },
+    {
+      "model": "FullyConnectedNet",
+      "setting": "adam, lr=0.001, epochs=3",
+      "train_acc": 0.57,
+      "val_acc": 0.286,
+      "test_acc": 0.232
+    }
+  ],
+  "knn_all_k_results": [
+    {
+      "k": 1,
+      "val_acc": 0.25,
+      "test_acc": 0.228
+    },
+    {
+      "k": 3,
+      "val_acc": 0.226,
+      "test_acc": 0.24
+    },
+    {
+      "k": 5,
+      "val_acc": 0.268,
+      "test_acc": 0.232
+    },
+    {
+      "k": 7,
+      "val_acc": 0.28,
+      "test_acc": 0.232
+    }
+  ],
+  "elapsed_seconds": 2.88
+}
