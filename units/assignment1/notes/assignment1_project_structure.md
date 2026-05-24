@@ -10,10 +10,6 @@
 * `../code/cs231n/solver.py`：神经网络训练循环。
 * `../code/run_assignment1_experiments.py`：统一实验脚本，负责运行 kNN、Softmax、TwoLayerNet 和 FullyConnectedNet，并生成结果。
 
-## 清理说明
-
-原始 `.ipynb`、notebook 转换得到的 `.py` 和 `.md` 文件已经移除。当前仓库不再依赖 notebook 作为执行入口，实际复现实验时只需要运行 `../code/run_assignment1_experiments.py`。
-
 ## 数据位置
 
 `get_datasets.sh` 的数据下载位置为：

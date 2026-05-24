@@ -1,6 +1,6 @@
 # DL Foundations Lab
 
-本仓库用于记录近期深度学习与 NLP 入门任务的学习过程、代码实现、实验结果和阶段性成果归档。仓库按“任务单元”和“阶段成果”两条线组织，方便自己持续维护，也方便公开访问者快速定位代码、笔记和报告。
+本仓库用于记录近期深度学习与 NLP 入门任务的学习过程、代码实现、实验结果和阶段性成果归档。仓库按“任务单元”和“阶段成果”两条线组织，方便自己持续维护。
 
 ## 当前仓库结构
 
@@ -38,13 +38,7 @@
 * Task1 NumPy 神经网络框架：待开始
 * Task2 NLP baseline：待开始
 
-## 说明
-
-本仓库不上传原始数据集、大体积模型参数文件、训练日志和 LaTeX 编译中间文件。可公开归档的报告 PDF 会保留在 `deliverables/` 目录中。未实际使用的目录暂不加入索引，后续启用时再补充说明。
-
 ## 面向索引的目录说明
-
-本节用于帮助公开访问者和后续 agent 快速定位代码、笔记、实验结果和阶段性成果。
 
 ### Assignment 1
 
@@ -55,7 +49,7 @@
 * 实现规划：`units/assignment1/notes/assignment1_implementation_plan.md`
 * 实验结果：`units/assignment1/results/`
 
-Assignment 1 已清理原始 notebook、notebook 转换产物和当前实验不再使用的辅助脚本；复现实验时以 `run_assignment1_experiments.py` 为统一入口。
+复现实验时以 `run_assignment1_experiments.py` 为统一入口。
 
 Assignment 1 数据按课程脚本下载到 `units/assignment1/code/cs231n/datasets/`。该目录中的数据文件不提交到 GitHub，只保留 `get_datasets.sh`。
 
