@@ -9,7 +9,7 @@
 * `week01_report.md`：本周进展周报。
 * `assignment1_study_notes.md`：Assignment 1 学习笔记。
 * `latex/week01_assignment1_report.tex`：报告 LaTeX 源文件。
-* `pdf/week01_assignment1_report.pdf`：归档报告 PDF。
+* `latex/week01_assignment1_report.pdf`：归档报告 PDF。
 * `../../units/assignment1/`：Assignment 1 单元任务目录，包含代码、实现规划和实验结果。
 
 ## 说明

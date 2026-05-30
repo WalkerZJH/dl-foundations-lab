@@ -17,4 +17,4 @@
 
 ## 当前结果
 
-当前实验使用 CIFAR-10 子集，训练集 2000 张、验证集 500 张、测试集 500 张。kNN 使用完整实验子集进行距离计算，不再额外采样。主要结果保存在 `units/assignment1/results/`，报告 PDF 保存在 `deliverables/week01_assignment1/pdf/week01_assignment1_report.pdf`。
+当前实验使用 CIFAR-10 子集，训练集 2000 张、验证集 500 张、测试集 500 张。kNN 使用完整实验子集进行距离计算，不再额外采样。主要结果保存在 `units/assignment1/results/`，报告 PDF 保存在 `deliverables/week01_assignment1/latex/week01_assignment1_report.pdf`。
