@@ -1,7 +1,5 @@
 # Assignment 2
 
-本单元对应 CS231n Assignment 2，当前已整理为可复现的纯 Python 工作流。
-
 主要内容包括 Batch Normalization、Layer Normalization、Dropout、卷积与池化、Spatial BatchNorm、GroupNorm、三层卷积网络，以及 PyTorch RNN/LSTM captioning 前向路径。
 
 ## 目录说明

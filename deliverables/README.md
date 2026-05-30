@@ -52,7 +52,7 @@
 
 时间范围：2026.05.25 - 2026.05.30
 
-本阶段围绕 CS231n Assignment 2 展开，重点是把归一化、dropout、卷积网络和 PyTorch RNN captioning 的 Notebook starter 整理为纯 Python 模块、统一实验脚本和阶段性报告。当前成果目录为 `week02_assignment2/`，过程代码和实验结果位于 `../units/assignment2/`。
+本阶段围绕 CS231n Assignment 2 展开，重点是把归一化、dropout、卷积网络和 PyTorch RNN captioning 的 Notebook转化为.py并填充代码、完成统一实验脚本和阶段性报告。当前成果目录为 `week02_assignment2/`，过程代码和实验结果位于 `../units/assignment2/`。
 
 ### 主要任务
 
@@ -64,7 +64,6 @@
 
 ### 当前成果
 
-* 周报：`week02_assignment2/week2_report.md`
 * 报告 PDF：`week02_assignment2/latex/week2_assignment2_report.pdf`
 * 方法补充：`week02_assignment2/assignment2_method_supplement.md`
 * 单元入口：`../units/assignment2/README.md`
@@ -73,7 +72,7 @@
 
 ### 实验概况
 
-当前正式实验使用 CIFAR-10 子集：训练集 2000 张、验证集 500 张、测试集 500 张，训练 10 epochs。烟测只记录 NumPy layer 和 PyTorch/RNN captioning 路径是否通过，不参与模型性能比较。
+当前正式实验使用 CIFAR-10 子集：训练集 2000 张、验证集 500 张、测试集 500 张，训练 10 epochs。
 
 主要结果如下：
 
@@ -81,7 +80,3 @@
 | --- | --- | ---: | ---: | ---: |
 | FullyConnectedNet + BN + Dropout | adam, lr=1e-3, epochs=10, hidden=[100,100], keep=0.8 | 0.5680 | 0.3420 | 0.3200 |
 | ThreeLayerConvNet | adam, lr=1e-3, epochs=10, filters=8, filter_size=3 | 0.8520 | 0.4620 | 0.4000 |
-
-### 阶段小结
-
-第 2 周完成了 Assignment 2 的第一轮工程化整理：从 Notebook starter 转为纯 Python 模块结构，并形成可复现实验入口。当前正式结果显示三层卷积网络在验证集和测试集上优于全连接网络，后续可继续扩展更完整的 PyTorch CIFAR-10 训练和 COCO captioning 实验。
