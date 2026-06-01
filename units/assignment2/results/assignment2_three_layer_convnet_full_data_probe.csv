@@ -1,0 +1,2 @@
+model,train_size,val_size,test_size,epochs,batch_size,num_filters,hidden_dim,reg,sampled_train_acc,full_train_acc,best_val_acc,test_acc,sampled_train_test_gap,full_train_test_gap,final_loss,elapsed_seconds
+ThreeLayerConvNet,49000,1000,1000,10,100,8,100,0.001,0.728,0.7295510204081632,0.614,0.611,0.11699999999999999,0.11855102040816323,0.689377767034254,534.4493818283081

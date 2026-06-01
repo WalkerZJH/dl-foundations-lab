@@ -1,0 +1,4 @@
+name,epochs,batch_size,num_filters,hidden_dim,reg,weight_scale,learning_rate,train_acc,best_val_acc,test_acc,final_loss
+strong_l2_reg,10,100,8,100,0.01,0.01,0.001,0.872,0.442,0.39,0.6305818182151195
+lower_capacity_strong_l2,10,100,4,100,0.01,0.01,0.001,0.758,0.432,0.368,0.7618829165496763
+smaller_hidden_strong_l2,10,100,8,50,0.01,0.01,0.001,0.746,0.418,0.392,0.7759496941602517
