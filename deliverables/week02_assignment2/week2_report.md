@@ -8,17 +8,19 @@
 
 * 补全 Assignment 2 核心实现，代码位于 `../../units/assignment2/code/cs231n/`。
 * 建立统一实验入口 `../../units/assignment2/code/run_assignment2_experiments.py`。
-* 生成实验结果、日志和可视化，位于 `../../units/assignment2/results/`。
+* 使用 CIFAR-10 完整训练设置运行 baseline、超参数搜索和消融实验，结果位于 `../../units/assignment2/results/`。
 * 编写项目结构、实现规划和关键实现笔记，位于 `../../units/assignment2/notes/`。
-* 编写 LaTeX 报告和方法补充，位于 `latex/` 与 `assignment2_method_supplement.md`。
+* 编写 LaTeX 报告，位于 `latex/`。
 
 ## 实验概况
 
-当前正式实验使用 CIFAR-10 子集：训练集 2000 张、验证集 500 张、测试集 500 张，训练 10 epochs。运行环境为 conda `minimind`。
+正式实验使用训练集 49000 张、验证集 1000 张、测试集 10000 张，训练 10 epochs，batch size 为 100。
 
-| 模型 | 训练准确率 | 验证准确率 | 测试准确率 |
-| --- | ---: | ---: | ---: |
-| FullyConnectedNet + BN + Dropout | 0.5680 | 0.3420 | 0.3200 |
-| ThreeLayerConvNet | 0.8520 | 0.4620 | 0.4000 |
+| 实验 | 代表配置 | Train Acc | Val Acc | Test Acc |
+| --- | --- | ---: | ---: | ---: |
+| Baseline FC | FullyConnectedNet + BN + Dropout | 0.3464 | 0.4010 | 0.3450 |
+| Baseline CNN | ThreeLayerConvNet, filters=8, reg=1e-3 | 0.7571 | 0.6110 | 0.6151 |
+| CNN 容量搜索 | filters=16, hidden=100, reg=1e-3 | 0.7791 | 0.6440 | 0.6350 |
+| FC 消融 | 无归一化、无 Dropout | 0.4429 | 0.4420 | 0.4394 |
 
-当前结果表明，在相同子集和正式训练配置下，三层卷积网络比全连接网络更好地利用图像空间结构。
+完整报告 PDF 位于 `pdf/week2_assignment2_report.pdf`。

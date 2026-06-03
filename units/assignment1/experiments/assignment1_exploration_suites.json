@@ -1,0 +1,162 @@
+{
+  "defaults": {
+    "data": {
+      "train_size": 49000,
+      "val_size": 1000,
+      "test_size": 10000
+    },
+    "solver": {
+      "update_rule": "sgd_momentum",
+      "learning_rate": 0.001,
+      "lr_decay": 0.95,
+      "epochs": 10,
+      "batch_size": 200,
+      "num_train_samples": null
+    }
+  },
+  "suites": {
+    "knn_k_hard_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "kNN k hard search",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-HP-KNN-HARD-001", "kind": "knn", "k": 1},
+        {"id": "A1-HP-KNN-HARD-002", "kind": "knn", "k": 3},
+        {"id": "A1-HP-KNN-HARD-003", "kind": "knn", "k": 5},
+        {"id": "A1-HP-KNN-HARD-004", "kind": "knn", "k": 7},
+        {"id": "A1-HP-KNN-HARD-005", "kind": "knn", "k": 9},
+        {"id": "A1-HP-KNN-HARD-006", "kind": "knn", "k": 11},
+        {"id": "A1-HP-KNN-HARD-007", "kind": "knn", "k": 13},
+        {"id": "A1-HP-KNN-HARD-008", "kind": "knn", "k": 15}
+      ]
+    },
+    "knn_k_elbow_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "kNN k elbow search",
+      "selection": {
+        "method": "elbow",
+        "tolerance": 0.01
+      },
+      "variants": [
+        {"id": "A1-HP-KNN-ELBOW-001", "kind": "knn", "k": 1},
+        {"id": "A1-HP-KNN-ELBOW-002", "kind": "knn", "k": 3},
+        {"id": "A1-HP-KNN-ELBOW-003", "kind": "knn", "k": 5},
+        {"id": "A1-HP-KNN-ELBOW-004", "kind": "knn", "k": 7},
+        {"id": "A1-HP-KNN-ELBOW-005", "kind": "knn", "k": 9},
+        {"id": "A1-HP-KNN-ELBOW-006", "kind": "knn", "k": 11},
+        {"id": "A1-HP-KNN-ELBOW-007", "kind": "knn", "k": 13},
+        {"id": "A1-HP-KNN-ELBOW-008", "kind": "knn", "k": 15}
+      ]
+    },
+    "softmax_lr_reg_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "Softmax lr and reg search",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-HP-SM-001", "kind": "linear", "classifier": "softmax", "learning_rate": 1e-7, "reg": 10000.0, "num_iters": 1500, "batch_size": 200},
+        {"id": "A1-HP-SM-002", "kind": "linear", "classifier": "softmax", "learning_rate": 1e-7, "reg": 25000.0, "num_iters": 1500, "batch_size": 200},
+        {"id": "A1-HP-SM-003", "kind": "linear", "classifier": "softmax", "learning_rate": 5e-8, "reg": 25000.0, "num_iters": 1500, "batch_size": 200},
+        {"id": "A1-HP-SM-004", "kind": "linear", "classifier": "softmax", "learning_rate": 2e-7, "reg": 25000.0, "num_iters": 1500, "batch_size": 200}
+      ]
+    },
+    "svm_lr_reg_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "SVM lr and reg search",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-HP-SVM-001", "kind": "linear", "classifier": "svm", "learning_rate": 1e-7, "reg": 10000.0, "num_iters": 1500, "batch_size": 200},
+        {"id": "A1-HP-SVM-002", "kind": "linear", "classifier": "svm", "learning_rate": 1e-7, "reg": 25000.0, "num_iters": 1500, "batch_size": 200},
+        {"id": "A1-HP-SVM-003", "kind": "linear", "classifier": "svm", "learning_rate": 5e-8, "reg": 25000.0, "num_iters": 1500, "batch_size": 200}
+      ]
+    },
+    "two_layer_lr_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "TwoLayerNet lr search",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-HP-LR-001", "kind": "solver", "model": "two_layer", "learning_rate": 0.01, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1},
+        {"id": "A1-HP-LR-002", "kind": "solver", "model": "two_layer", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1},
+        {"id": "A1-HP-LR-003", "kind": "solver", "model": "two_layer", "learning_rate": 0.0001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1}
+      ]
+    },
+    "two_layer_l2_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "TwoLayerNet L2 search",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-HP-L2-001", "kind": "solver", "model": "two_layer", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.0},
+        {"id": "A1-HP-L2-002", "kind": "solver", "model": "two_layer", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.001},
+        {"id": "A1-HP-L2-003", "kind": "solver", "model": "two_layer", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1}
+      ]
+    },
+    "batch_size_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "TwoLayerNet batch size search",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-HP-BS-001", "kind": "solver", "model": "two_layer", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1, "batch_size": 64},
+        {"id": "A1-HP-BS-002", "kind": "solver", "model": "two_layer", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1, "batch_size": 128},
+        {"id": "A1-HP-BS-003", "kind": "solver", "model": "two_layer", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1, "batch_size": 200}
+      ]
+    },
+    "init_ablation": {
+      "type": "ablation",
+      "result_group": "ablation",
+      "title": "TwoLayerNet initialization ablation",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-AB-INIT-001", "kind": "solver", "model": "two_layer", "init": "zero", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1},
+        {"id": "A1-AB-INIT-002", "kind": "solver", "model": "two_layer", "init": "normal", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1},
+        {"id": "A1-AB-INIT-003", "kind": "solver", "model": "two_layer", "init": "he", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1}
+      ]
+    },
+    "optimizer_ablation": {
+      "type": "ablation",
+      "result_group": "ablation",
+      "title": "TwoLayerNet optimizer ablation",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-AB-OPT-001", "kind": "solver", "model": "two_layer", "update_rule": "sgd", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1},
+        {"id": "A1-AB-OPT-002", "kind": "solver", "model": "two_layer", "update_rule": "sgd_momentum", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1},
+        {"id": "A1-AB-OPT-003", "kind": "solver", "model": "two_layer", "update_rule": "adam", "learning_rate": 0.001, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.1}
+      ]
+    },
+    "normalization_dropout_ablation": {
+      "type": "ablation",
+      "result_group": "ablation",
+      "title": "FullyConnectedNet normalization dropout ablation",
+      "selection": {
+        "method": "best_val"
+      },
+      "variants": [
+        {"id": "A1-AB-NORM-001", "kind": "solver", "model": "fully_connected", "hidden_dims": [100, 100], "normalization": null, "dropout_keep_ratio": 1.0, "update_rule": "adam", "learning_rate": 0.001, "weight_scale": 0.05, "reg": 0.1},
+        {"id": "A1-AB-NORM-002", "kind": "solver", "model": "fully_connected", "hidden_dims": [100, 100], "normalization": "batchnorm", "dropout_keep_ratio": 1.0, "update_rule": "adam", "learning_rate": 0.001, "weight_scale": 0.05, "reg": 0.1},
+        {"id": "A1-AB-NORM-003", "kind": "solver", "model": "fully_connected", "hidden_dims": [100, 100], "normalization": "layernorm", "dropout_keep_ratio": 1.0, "update_rule": "adam", "learning_rate": 0.001, "weight_scale": 0.05, "reg": 0.1},
+        {"id": "A1-AB-NORM-004", "kind": "solver", "model": "fully_connected", "hidden_dims": [100, 100], "normalization": null, "dropout_keep_ratio": 0.8, "update_rule": "adam", "learning_rate": 0.001, "weight_scale": 0.05, "reg": 0.1}
+      ]
+    }
+  }
+}

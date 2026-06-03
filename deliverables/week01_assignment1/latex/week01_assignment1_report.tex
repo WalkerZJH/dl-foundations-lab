@@ -6,6 +6,19 @@
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\graphicspath{
+  {../../../units/assignment1/results/baseline/figures/}
+  {../../../units/assignment1/results/hparam_tuning/softmax_lr_reg_search_20260601_173447/}
+  {../../../units/assignment1/results/hparam_tuning/svm_lr_reg_search_20260601_173521/}
+  {../../../units/assignment1/results/hparam_tuning/two_layer_lr_search_20260601_173552/}
+  {../../../units/assignment1/results/ablation/optimizer_ablation_20260601_174556/}
+  {../../../units/assignment1/results/ablation/normalization_dropout_ablation_20260601_174826/}
+}
+
+\newcommand{\todoitem}[1]{\textbf{待补充：}#1}
 
 \title{第 1 周学习报告：CS231n Assignment 1}
 \author{WalkerZJH}
@@ -15,99 +28,123 @@
 
 \maketitle
 
-\section{任务目标}
+\section{任务背景与目标}
 
-本周工作围绕 CS231n Assignment 1 展开，目标是完成深度学习与基础分类器相关代码补全，并整理为可复现、便于公开查看和后续维护的仓库材料。当前仓库将过程代码、学习笔记、实验结果和阶段性成果分开组织：
+本阶段围绕 CS231n Assignment 1 展开，主题包括 kNN、Softmax、SVM、TwoLayerNet、FullyConnectedNet、基础网络层、优化器和向量化实现。
+
+本报告将 Assignment 1 的目标拆分为三类：
 \begin{itemize}
-  \item 过程代码位于 \texttt{units/assignment1/code/}。
-  \item 学习笔记、项目结构说明和实现规划位于 \texttt{units/assignment1/notes/}。
-  \item 实验结果和可视化图片位于 \texttt{units/assignment1/results/}。
-  \item 阶段性报告归档位于 \texttt{deliverables/week01\_assignment1/}。
+  \item \textbf{实现目标}：补全 kNN、Softmax、SVM、LinearClassifier、TwoLayerNet、FullyConnectedNet、常用 layer 和 optimizer。
+  \item \textbf{验证目标}：通过 baseline 复现实验、训练曲线、准确率对比和小数据行为检查确认实现可以完整训练和预测。
+  \item \textbf{探索目标}：围绕 kNN 的 $k$ 值选择、线性分类器的学习率与正则、TwoLayerNet 的学习率/L2/batch size、初始化方式、优化器、归一化和 dropout 设计可复现实验。
 \end{itemize}
 
-\section{从 Jupyter Notebook 到纯 Python 工程的整理思路}
-
-原始 CS231n Assignment 1 以多个 Jupyter Notebook 作为任务入口，每个 Notebook 同时承担说明、调试、实验和结果展示功能。这种形式适合课程交互式学习，但不利于后续仓库维护、自动化运行和快速索引代码。因此本次整理采用“保留核心实现、移除交互式外壳、统一实验入口”的方式，将 Assignment 1 转换为纯 Python 工程结构。
-
-转换时遵循以下原则：
-\begin{enumerate}[label=\arabic*.]
-  \item \textbf{Notebook 只作为任务理解来源}：读取 Notebook 中的实验目标、调用顺序和检查点，但不将 Notebook 继续作为正式运行入口。
-  \item \textbf{核心逻辑下沉到模块}：将 kNN、Softmax、SVM、全连接网络、基础层和优化器的 TODO 补全在 \texttt{cs231n/} 模块内，避免把重要实现散落在 Notebook 单元格中。
-  \item \textbf{统一实验脚本}：用 \texttt{run\_assignment1\_experiments.py} 串联数据加载、模型训练、评估、日志写出和图表生成，使实验可以通过一条命令复现。
-  \item \textbf{结果与报告分离}：实验原始输出和轻量结果放在 \texttt{units/assignment1/results/}，阶段性报告放在 \texttt{deliverables/week01\_assignment1/latex/} 和 \texttt{pdf/}。
-\end{enumerate}
-
-\section{模块架构思路}
-
-Assignment 1 当前代码架构按功能拆分为四层：
+当前代码、笔记和结果按公开归档结构保存：
 \begin{itemize}
-  \item \textbf{数据层}：\texttt{cs231n/data\_utils.py} 负责读取 CIFAR-10 数据，并提供训练集、验证集和测试集划分。
-  \item \textbf{基础算子层}：\texttt{cs231n/layers.py} 实现 affine、ReLU、归一化、dropout、卷积、池化和损失函数等可复用组件。
-  \item \textbf{模型层}：\texttt{cs231n/classifiers/} 中实现 kNN、线性分类器、Softmax、SVM、TwoLayerNet 和 FullyConnectedNet。
-  \item \textbf{训练与实验层}：\texttt{cs231n/solver.py}、\texttt{cs231n/optim.py} 和 \texttt{run\_assignment1\_experiments.py} 负责参数更新、训练循环、评估和结果保存。
+  \item 过程代码：\texttt{units/assignment1/code/}；
+  \item 实验设计：\texttt{units/assignment1/experiments/}；
+  \item 学习笔记：\texttt{units/assignment1/notes/}；
+  \item 实验结果：\texttt{units/assignment1/results/}；
+  \item 阶段成果：\texttt{deliverables/week01\_assignment1/}。
 \end{itemize}
 
-这种拆分使模型实现可以复用底层 layer，训练脚本只负责组织流程，不直接堆叠数学细节。后续如果继续推进 Task1 NumPy 神经网络框架，也可以沿用“基础算子、模型、优化器、实验入口”这一结构。
+\section{研究问题与探索路线}
 
-\section{主要模块实现思路与易错点}
+为了将报告从“完成记录”改为“问题驱动的实验记录”，本阶段围绕以下研究问题组织实现和实验。
+
+\begin{table}[H]
+\centering
+\begin{tabular}{p{0.13\linewidth}p{0.30\linewidth}p{0.32\linewidth}p{0.15\linewidth}}
+\toprule
+编号 & 研究问题 & 验证方法 & 观察指标 \\
+\midrule
+RQ1 & 基础分类器和全连接网络是否能完成稳定训练与预测 & baseline 复现实验、loss 曲线、准确率对比 & train/val/test accuracy、final loss \\
+RQ2 & kNN 的 $k$ 值如何影响验证集选择与测试表现 & hard search 与 elbow 选择对比 & val accuracy、test accuracy、选择的 $k$ \\
+RQ3 & 学习率、L2 正则和 batch size 如何影响训练动态 & 线性分类器与 TwoLayerNet 的控制变量搜索 & loss 曲线、震荡/发散、train-val gap \\
+RQ4 & 初始化、优化器、归一化和 dropout 如何影响优化与泛化 & 初始化消融、优化器消融、归一化/dropout 消融 & 收敛速度、验证准确率、泛化差距 \\
+\bottomrule
+\end{tabular}
+\caption{Assignment 1 的研究问题与验证路线}
+\end{table}
+
+\section{框架设计与实现}
+
+\subsection{整体代码架构}
+
+Assignment 1 的代码按功能拆分为四层：
+\begin{itemize}
+  \item \textbf{数据层}：\texttt{cs231n/data\_utils.py} 负责读取 CIFAR-10 并提供训练集、验证集和测试集划分。
+  \item \textbf{基础算子层}：\texttt{cs231n/layers.py} 实现 affine、ReLU、normalization、dropout、convolution、pooling 和损失函数。
+  \item \textbf{模型层}：\texttt{cs231n/classifiers/} 实现 kNN、线性分类器、Softmax、SVM、TwoLayerNet 和 FullyConnectedNet。
+  \item \textbf{训练与实验层}：\texttt{solver.py}、\texttt{optim.py}、\texttt{run\_assignment1\_experiments.py} 和 \texttt{run\_assignment1\_explorations.py} 负责训练、评估、结果保存和探索实验调度。
+\end{itemize}
+
+\section{核心模块原理与实现要点}
 
 \subsection{kNN}
 
-kNN 的核心在于距离矩阵计算和多数投票预测。实现中补全了两层循环、一层循环和无循环三种 L2 距离计算方式，其中无循环版本使用公式
+kNN 不显式学习参数，训练阶段保存训练样本，预测阶段计算测试样本到训练样本的距离并投票。无循环 L2 距离使用：
 \[
 \|x-y\|_2^2=\|x\|_2^2+\|y\|_2^2-2x^\top y
 \]
-避免显式遍历样本对。预测阶段对每个测试样本选取距离最近的 $k$ 个训练样本标签，并用多数投票得到类别。
-
-易错点主要有三处：第一，广播维度必须保持为 \texttt{(num\_test, num\_train)}；第二，平方距离由于浮点误差可能出现极小负数，开方前需要用 \texttt{maximum} 做保护；第三，投票平票时应选择较小标签，保持结果稳定。
+该实现重点是将距离矩阵组织为 \texttt{(num\_test, num\_train)}，并在投票平票时选择较小标签以保证结果稳定。
 
 \subsection{Softmax 与 SVM}
 
-Softmax 实现包括朴素版本和向量化版本。关键步骤是先对 score 减去每个样本的最大值，避免指数溢出，再计算交叉熵损失和权重梯度。SVM 实现使用 multiclass hinge loss，重点是构造 margin 矩阵，并对正确类别补回每行梯度的负计数。
-
-易错点包括：正则项损失通常写为 $reg\sum W^2$，梯度为 $2regW$；Softmax 的概率矩阵需要先复制或原地调整正确类别项；SVM 中正确类别的 margin 必须清零，否则会错误增加损失。
-
-\subsection{LinearClassifier}
-
-\texttt{LinearClassifier} 是 Softmax 和 SVM 的公共训练框架，负责小批量采样、调用具体 loss、执行 SGD 更新和预测。该层的设计重点是把“分类器损失函数”和“训练流程”解耦，子类只需要实现 \texttt{loss()}，训练逻辑可以复用。
-
-易错点是 mini-batch 采样要同时抽取 \texttt{X} 和 \texttt{y}，并保持索引一致；预测时应对 \texttt{X.dot(W)} 取最大 score 的类别，而不是对概率或损失进行额外处理。
-
-\subsection{基础层 layers.py}
-
-\texttt{layers.py} 是全连接网络的底层基础，包含 affine、ReLU、batch normalization、layer normalization、dropout、卷积、池化、spatial normalization 以及 SVM/Softmax loss。实现思路是每个 forward 函数返回输出和 cache，每个 backward 函数只依赖对应 cache 还原局部梯度。
-
-关键点是严格维护张量形状：affine 层需要把输入展平为 \texttt{(N, D)}；卷积和池化层需要处理 padding、stride 和输出尺寸；batch normalization 的训练模式和测试模式行为不同；dropout 在训练阶段随机屏蔽，在测试阶段直接返回输入。
-
-易错点主要是 cache 内容不完整会导致反向传播无法恢复中间变量；batch normalization 的 running mean 和 running variance 需要在训练时更新；layer normalization 与 batch normalization 的归一化维度不同，不能直接照搬 axis。
+Softmax 使用线性 score 和交叉熵损失：
+\[
+s = XW,\quad
+p_j = \frac{\exp(s_j)}{\sum_k \exp(s_k)},\quad
+L = -\log p_y + \mathrm{reg}\sum W^2
+\]
+实现时先减去每个样本最大 score 以避免指数溢出。SVM 使用 multiclass hinge loss，关键是构造 margin 矩阵并对正确类别补回每行梯度的负计数。两者都提供 naive 与 vectorized 实现，用于理解循环版本和矩阵化版本之间的等价关系。
 
 \subsection{TwoLayerNet 与 FullyConnectedNet}
 
-TwoLayerNet 使用 affine-ReLU-affine-softmax 结构，适合作为从线性分类器过渡到神经网络的最小例子。FullyConnectedNet 则将该结构推广到任意隐藏层数量，并可选支持 batch normalization、layer normalization 和 dropout。
+TwoLayerNet 使用 affine-ReLU-affine-softmax 结构，是从线性分类器过渡到神经网络的最小例子。FullyConnectedNet 将该结构推广为多层网络，并可选使用 normalization 和 dropout。实现上每一层 forward 保存 cache，backward 按相反顺序传播梯度，L2 正则项以 $0.5 \cdot \mathrm{reg}\sum W^2$ 写入损失，使梯度项为 $\mathrm{reg}W$。
 
-实现上，前向传播按层缓存中间结果，反向传播按相反顺序依次计算梯度。每个权重矩阵都加入 L2 正则化，损失中加入 $0.5reg\sum W^2$，这样梯度项可以简洁写为 $regW$。
+\subsection{优化器}
 
-易错点是层编号和参数名必须一致，例如 \texttt{W1,b1,W2,b2}；使用 batch normalization 时还要维护 \texttt{gamma} 和 \texttt{beta}；dropout cache 必须按层保存，否则反向传播会复用错误 mask。
+优化器模块实现 SGD、SGD with momentum、RMSProp 和 Adam。SGD 只使用当前梯度；momentum 维护速度项以平滑更新；Adam 同时维护一阶矩和二阶矩，并进行 bias correction。后续优化器消融用相同网络结构观察不同更新规则对 loss 曲线和验证准确率的影响。
 
-\subsection{优化器 optim.py}
+\section{实验设置}
 
-优化器模块实现了 SGD、SGD with momentum、RMSProp 和 Adam。SGD 是基础更新；momentum 通过速度项平滑梯度；RMSProp 根据梯度平方的滑动平均调整学习率；Adam 同时维护一阶矩和二阶矩，并做 bias correction。
+\subsection{数据集与划分}
 
-易错点是优化器的 \texttt{config} 需要在多次调用间保留状态；Adam 的时间步 \texttt{t} 必须递增；RMSProp 和 Adam 中的 \texttt{epsilon} 应加在分母，防止除零。
-
-\section{数据与实验设置}
-
-数据集按 \texttt{cs231n/datasets/get\_datasets.sh} 的要求下载。
-
-实验脚本为 \texttt{units/assignment1/code/run\_assignment1\_experiments.py}。本次实验使用 CIFAR-10 子集：
+实验使用 CIFAR-10 的完整训练设置：
 \begin{itemize}
-  \item 训练集：2000 张图片。
-  \item 验证集：500 张图片。
-  \item 测试集：500 张图片。
-  \item kNN 使用当前实验子集的完整 2000 张训练样本、500 张验证样本和 500 张测试样本，不再额外采样。
+  \item 训练集：49000 张；
+  \item 验证集：1000 张；
+  \item 测试集：10000 张；
+  \item 运行环境：本地 Python 环境；
+  \item kNN 使用完整训练集，距离计算采用 chunked 方式控制内存占用。
 \end{itemize}
 
-\section{实验结果}
+\subsection{控制变量原则}
+
+探索实验按 suite 组织，每组只改变一个主要因素。例如 kNN 只改变 $k$，TwoLayerNet 学习率搜索只改变 learning rate，初始化消融只改变初始化方式，优化器消融只改变 update rule。这样结果可以对应到具体训练机制。
+
+\section{超参数搜索与消融设计}
+
+\subsection{kNN 的 $k$ 值选择}
+
+kNN 实验比较 hard search 和 elbow 两种选择策略。hard search 直接选择验证准确率最高的 $k$；elbow 在接近最高验证准确率的平台区间内选择较小 $k$，用于观察模型选择是否对验证集细小波动过度敏感。
+
+\subsection{线性分类器学习率与正则搜索}
+
+Softmax 与 SVM 搜索 learning rate 和 L2 正则强度。学习率影响更新步长，L2 正则约束权重规模，两者共同决定 loss 下降速度、训练准确率和验证准确率。
+
+\subsection{TwoLayerNet 超参数搜索}
+
+TwoLayerNet 分别搜索学习率、L2 正则和 batch size。学习率实验用于观察发散和收敛速度；L2 实验用于观察欠拟合与过拟合；batch size 实验用于观察梯度噪声、训练耗时和泛化波动。
+
+\subsection{初始化、优化器与归一化消融}
+
+初始化消融比较 zero、normal 和 He 初始化；优化器消融比较 SGD、Momentum 和 Adam；归一化/dropout 消融比较无归一化、BatchNorm、LayerNorm 和 Dropout。该组实验用于解释训练动态差异，而不仅是选择最高准确率。
+
+\section{实验结果与分析}
+
+\subsection{Baseline 结果}
 
 \begin{table}[H]
 \centering
@@ -115,31 +152,136 @@ TwoLayerNet 使用 affine-ReLU-affine-softmax 结构，适合作为从线性分�
 \toprule
 模型 & 设置 & 训练准确率 & 验证准确率 & 测试准确率 \\
 \midrule
-kNN & $k=7$, train=2000, val=500, test=500 & -- & 0.2800 & 0.2320 \\
-Softmax & lr=$10^{-7}$, reg=$2.5\times10^4$, iters=500 & 0.3410 & 0.3080 & 0.2960 \\
-TwoLayerNet & sgd\_momentum, lr=0.001, epochs=3 & 0.2560 & 0.2820 & 0.2760 \\
-FullyConnectedNet & Adam, lr=0.001, epochs=3 & 0.5700 & 0.2860 & 0.2320 \\
+Softmax & lr=$10^{-7}$, reg=$2.5\times10^4$, iters=1500 & 0.3314 & 0.3460 & 0.3312 \\
+TwoLayerNet & momentum, lr=0.001, epochs=10 & 0.2204 & 0.2440 & 0.2218 \\
+FullyConnectedNet & Adam, lr=0.001, epochs=10 & 0.4670 & 0.4640 & 0.4360 \\
 \bottomrule
 \end{tabular}
-\caption{Assignment 1 小规模 CIFAR-10 实验结果}
+\caption{Assignment 1 baseline 实验结果}
 \end{table}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\linewidth]{../../../units/assignment1/results/figures/assignment1_loss_curves.png}
-\caption{Softmax、TwoLayerNet、FullyConnectedNet 训练损失曲线}
+\includegraphics[width=0.84\linewidth]{assignment1_loss_curves.png}
+\caption{Assignment 1 baseline 训练损失曲线}
 \end{figure}
 
-\section{结果分析}
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.84\linewidth]{assignment1_accuracy_comparison_full_data.png}
+\caption{Assignment 1 baseline 验证集与测试集准确率对比}
+\end{figure}
 
-从实验结果看，kNN 使用 2000/500/500 实验子集后，最佳验证准确率为 0.2800，测试准确率为 0.2320。kNN 不需要训练参数，但推理阶段需要计算测试样本到所有训练样本的距离，因此样本数增加后运行时间会明显上升。
+\subsection{kNN 搜索结果}
 
-Softmax 在当前小规模设置下取得最高测试准确率 0.2960，说明线性分类器已经能从原始像素中学习到一部分 CIFAR-10 判别信息。TwoLayerNet 的测试准确率为 0.2760，接近 Softmax，但训练轮数较少，后续仍需要调节学习率、隐藏层规模和正则化强度。
+\begin{table}[H]
+\centering
+\begin{tabular}{lccc}
+\toprule
+方法 & 选择的 $k$ & 验证准确率 & 测试准确率 \\
+\midrule
+hard search & 1 & 0.3570 & 0.3513 \\
+elbow selection & 1 & 0.3570 & 0.3513 \\
+\bottomrule
+\end{tabular}
+\caption{kNN hard search 与 elbow 选择结果}
+\end{table}
 
-FullyConnectedNet 的训练准确率为 0.5700，高于验证和测试准确率，说明模型容量变大后已经出现过拟合。后续可以通过扩大训练集、增加正则化、调整 dropout keep ratio、延长训练并配合学习率衰减来改进泛化能力。
+两个选择策略都落在 $k=1$，说明在完整训练集和当前验证集上，最近邻样本本身提供了最强的局部匹配信号。
 
-\section{本周总结}
+\subsection{线性分类器搜索结果}
 
-本周完成了 Assignment 1 的主要代码补全、数据下载、实验脚本、实验结果和阶段性报告整理。当前仓库已经清理原始 notebook、notebook 转换产物和当前实验不再使用的辅助脚本，只保留复现实验所需的核心代码、学习笔记、实验结果和阶段性归档材料。通过本次整理，Assignment 1 已经从课程 Notebook 形态转为更清晰的 Python 模块化工程，便于公开查看和后续继续推进 Task1 NumPy 神经网络框架。
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+实验 & 选中配置 & 训练准确率 & 验证准确率 & 测试准确率 \\
+\midrule
+Softmax & lr=$10^{-7}$, reg=$10^4$ & 0.3546 & 0.3780 & 0.3523 \\
+SVM & lr=$10^{-7}$, reg=$10^4$ & 0.3842 & 0.3860 & 0.3760 \\
+\bottomrule
+\end{tabular}
+\caption{Softmax 与 SVM 搜索结果}
+\end{table}
+
+SVM 在完整训练设置下取得测试准确率 0.3760，优于 Softmax 的 0.3523。两者的最佳验证配置都使用较低正则强度 $10^4$，说明在完整训练集上，过强的 L2 约束会限制线性分类器的有效容量。
+
+\subsection{TwoLayerNet 搜索结果}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+实验 & 选中配置 & 训练准确率 & 验证准确率 & 测试准确率 \\
+\midrule
+学习率搜索 & lr=$10^{-4}$ & 0.5469 & 0.4920 & 0.4802 \\
+L2 正则搜索 & reg=$10^{-3}$ & 0.2299 & 0.2370 & 0.2401 \\
+batch size 搜索 & batch size=128 & 0.2234 & 0.2400 & 0.2193 \\
+\bottomrule
+\end{tabular}
+\caption{TwoLayerNet 超参数搜索结果}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+配置 & 学习率 & 数值状态 & 验证准确率 & 测试准确率 \\
+\midrule
+A1-HP-LR-001 & $10^{-2}$ & loss 溢出并出现 NaN & 0.1670 & 0.1533 \\
+A1-HP-LR-002 & $10^{-3}$ & loss 放大到 $10^{40}$ 量级 & 0.2280 & 0.2303 \\
+A1-HP-LR-003 & $10^{-4}$ & loss 稳定下降 & 0.4920 & 0.4802 \\
+\bottomrule
+\end{tabular}
+\caption{TwoLayerNet 学习率搜索的数值稳定性}
+\end{table}
+
+学习率搜索中，$10^{-2}$ 和 $10^{-3}$ 都表现出明显的数值不稳定。前者在训练中出现溢出和 NaN，后者虽然没有变成 NaN，但 final loss 达到 $10^{40}$ 量级，已经不能作为稳定收敛的候选配置。可以 看出，学习率过大导致参数更新越过了 loss landscape 中的稳定区域，造成训练震荡和发散。因此，应合理选择学习率，以充分利用短训练期内的快速迭代。
+
+\subsection{消融实验结果}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcccc}
+\toprule
+实验 & 选中配置 & 训练准确率 & 验证准确率 & 测试准确率 \\
+\midrule
+初始化消融 & He 初始化 & 0.2358 & 0.2520 & 0.2318 \\
+优化器消融 & SGD & 0.5489 & 0.4960 & 0.4855 \\
+归一化/dropout 消融 & 无归一化/无 Dropout & 0.4777 & 0.4840 & 0.4637 \\
+\bottomrule
+\end{tabular}
+\caption{Assignment 1 消融实验结果}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.84\linewidth]{optimizer_ablation_loss_curves.png}
+\caption{优化器消融损失曲线}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.84\linewidth]{normalization_dropout_ablation_accuracy.png}
+\caption{归一化与 Dropout 消融准确率对比}
+\end{figure}
+
+初始化消融中，零初始化接近随机猜测，符合隐藏单元对称性无法有效破缺的预期。He 初始化在固定 $lr=10^{-3}$ 的 momentum 配置下验证准确率略高，但 final loss 偏大，说明初始化方式需要和学习率共同判断。优化器消融中 SGD 取得最高验证和测试准确率，Momentum 在同一学习率下发散，Adam 则稳定但测试准确率低于 SGD。归一化/dropout 消融中，无归一化且不使用 Dropout 的全连接网络表现最好；BatchNorm 和 LayerNorm 在当前浅层、短训练配置下没有带来提升，Dropout 单独使用明显降低容量。
+
+\section{问题、调试过程与解决方案}
+
+\subsection{学习率发散现象}
+
+TwoLayerNet 学习率搜索中，$lr=10^{-2}$ 出现溢出和 NaN，$lr=10^{-3}$ 的 loss 也放大到 $10^{40}$ 量级。这是学习率过大导致参数更新越过稳定区域的典型现象。解决方案是引入学习率衰减机制，或者在搜索过程中增加更细粒度的学习率选项，如 $5\times10^{-4}$、$2\times10^{-4}$ 等，以找到既能快速下降又不失稳定性的学习率。
+
+\section{阶段性总结与后续计划}
+
+\subsection{模型理解方面的收获}
+
+kNN 体现了非参数方法中“训练简单、预测依赖全量距离计算”的特点；Softmax/SVM 体现了线性分类器在原始像素上的基本判别能力；TwoLayerNet 和 FullyConnectedNet 展示了非线性模型容量提升后对学习率、初始化、正则和优化器更敏感。
+
+\subsection{调优能力方面的收获}
+
+本阶段结果说明，调参需要同时看 loss 曲线、验证准确率、测试准确率和 train-val gap。验证集用于选择配置，测试集用于最终观察；当测试表现与验证选择不完全一致时，应优先维护验证集选择原则，避免测试集泄漏到调参过程。
 
 \end{document}

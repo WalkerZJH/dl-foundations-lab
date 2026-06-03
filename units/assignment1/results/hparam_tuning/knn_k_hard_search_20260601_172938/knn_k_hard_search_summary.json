@@ -1,0 +1,185 @@
+{
+  "suite": "knn_k_hard_search",
+  "status": "completed",
+  "started_at": "2026-06-01T17:29:38",
+  "updated_at": "2026-06-01T17:32:10",
+  "elapsed_seconds": 152.40383911132812,
+  "suite_meta": {
+    "type": "hparam_tuning",
+    "result_group": "hparam_tuning",
+    "title": "kNN k hard search",
+    "selection": {
+      "method": "best_val"
+    }
+  },
+  "data": {
+    "train_size": 49000,
+    "val_size": 1000,
+    "test_size": 10000
+  },
+  "results": [
+    {
+      "id": "A1-HP-KNN-HARD-001",
+      "model": "kNN",
+      "setting": "kind=knn, k=1",
+      "train_acc": "",
+      "val_acc": 0.357,
+      "test_acc": 0.3513,
+      "train_val_gap": "",
+      "final_loss": "",
+      "elapsed_seconds": 150.84430742263794,
+      "loss_history": [],
+      "train_acc_history": [],
+      "val_acc_history": [],
+      "variant": {
+        "id": "A1-HP-KNN-HARD-001",
+        "kind": "knn",
+        "k": 1
+      }
+    },
+    {
+      "id": "A1-HP-KNN-HARD-002",
+      "model": "kNN",
+      "setting": "kind=knn, k=3",
+      "train_acc": "",
+      "val_acc": 0.327,
+      "test_acc": 0.3281,
+      "train_val_gap": "",
+      "final_loss": "",
+      "elapsed_seconds": 150.84430742263794,
+      "loss_history": [],
+      "train_acc_history": [],
+      "val_acc_history": [],
+      "variant": {
+        "id": "A1-HP-KNN-HARD-002",
+        "kind": "knn",
+        "k": 3
+      }
+    },
+    {
+      "id": "A1-HP-KNN-HARD-003",
+      "model": "kNN",
+      "setting": "kind=knn, k=5",
+      "train_acc": "",
+      "val_acc": 0.326,
+      "test_acc": 0.3392,
+      "train_val_gap": "",
+      "final_loss": "",
+      "elapsed_seconds": 150.84430742263794,
+      "loss_history": [],
+      "train_acc_history": [],
+      "val_acc_history": [],
+      "variant": {
+        "id": "A1-HP-KNN-HARD-003",
+        "kind": "knn",
+        "k": 5
+      }
+    },
+    {
+      "id": "A1-HP-KNN-HARD-004",
+      "model": "kNN",
+      "setting": "kind=knn, k=7",
+      "train_acc": "",
+      "val_acc": 0.323,
+      "test_acc": 0.3359,
+      "train_val_gap": "",
+      "final_loss": "",
+      "elapsed_seconds": 150.84430742263794,
+      "loss_history": [],
+      "train_acc_history": [],
+      "val_acc_history": [],
+      "variant": {
+        "id": "A1-HP-KNN-HARD-004",
+        "kind": "knn",
+        "k": 7
+      }
+    },
+    {
+      "id": "A1-HP-KNN-HARD-005",
+      "model": "kNN",
+      "setting": "kind=knn, k=9",
+      "train_acc": "",
+      "val_acc": 0.308,
+      "test_acc": 0.3386,
+      "train_val_gap": "",
+      "final_loss": "",
+      "elapsed_seconds": 150.84430742263794,
+      "loss_history": [],
+      "train_acc_history": [],
+      "val_acc_history": [],
+      "variant": {
+        "id": "A1-HP-KNN-HARD-005",
+        "kind": "knn",
+        "k": 9
+      }
+    },
+    {
+      "id": "A1-HP-KNN-HARD-006",
+      "model": "kNN",
+      "setting": "kind=knn, k=11",
+      "train_acc": "",
+      "val_acc": 0.316,
+      "test_acc": 0.3412,
+      "train_val_gap": "",
+      "final_loss": "",
+      "elapsed_seconds": 150.84430742263794,
+      "loss_history": [],
+      "train_acc_history": [],
+      "val_acc_history": [],
+      "variant": {
+        "id": "A1-HP-KNN-HARD-006",
+        "kind": "knn",
+        "k": 11
+      }
+    },
+    {
+      "id": "A1-HP-KNN-HARD-007",
+      "model": "kNN",
+      "setting": "kind=knn, k=13",
+      "train_acc": "",
+      "val_acc": 0.306,
+      "test_acc": 0.3414,
+      "train_val_gap": "",
+      "final_loss": "",
+      "elapsed_seconds": 150.84430742263794,
+      "loss_history": [],
+      "train_acc_history": [],
+      "val_acc_history": [],
+      "variant": {
+        "id": "A1-HP-KNN-HARD-007",
+        "kind": "knn",
+        "k": 13
+      }
+    },
+    {
+      "id": "A1-HP-KNN-HARD-008",
+      "model": "kNN",
+      "setting": "kind=knn, k=15",
+      "train_acc": "",
+      "val_acc": 0.308,
+      "test_acc": 0.3389,
+      "train_val_gap": "",
+      "final_loss": "",
+      "elapsed_seconds": 150.84430742263794,
+      "loss_history": [],
+      "train_acc_history": [],
+      "val_acc_history": [],
+      "variant": {
+        "id": "A1-HP-KNN-HARD-008",
+        "kind": "knn",
+        "k": 15
+      }
+    }
+  ],
+  "selected": {
+    "id": "A1-HP-KNN-HARD-001",
+    "model": "kNN",
+    "setting": "kind=knn, k=1",
+    "train_acc": "",
+    "val_acc": 0.357,
+    "test_acc": 0.3513,
+    "train_val_gap": "",
+    "final_loss": "",
+    "elapsed_seconds": 150.84430742263794
+  }
+}

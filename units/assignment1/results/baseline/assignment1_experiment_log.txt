@@ -1,0 +1,7 @@
+Assignment 1 experiment log
+X_train=(49000, 3, 32, 32), X_val=(1000, 3, 32, 32), X_test=(10000, 3, 32, 32)
+configuration: train=49000, val=1000, test=10000, epochs=10, batch_size=200
+Softmax: setting=lr=1e-7, reg=2.5e4, iters=1500, val_acc=0.3460, test_acc=0.3312
+TwoLayerNet: setting=sgd_momentum, lr=0.001, epochs=10, val_acc=0.2440, test_acc=0.2218
+FullyConnectedNet: setting=adam, lr=0.001, epochs=10, val_acc=0.4640, test_acc=0.4360
+elapsed_seconds=90.74

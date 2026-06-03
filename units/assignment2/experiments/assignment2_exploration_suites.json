@@ -1,0 +1,63 @@
+{
+  "defaults": {
+    "data": {
+      "train_size": 49000,
+      "val_size": 1000,
+      "test_size": 10000
+    },
+    "solver": {
+      "update_rule": "adam",
+      "learning_rate": 0.001,
+      "lr_decay": 0.95,
+      "epochs": 10,
+      "batch_size": 100,
+      "num_train_samples": null
+    }
+  },
+  "suites": {
+    "conv_capacity_reg_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "ThreeLayerConvNet capacity and reg search",
+      "variants": [
+        {"id": "A2-HP-CNN-001", "model": "three_layer_convnet", "kind": "solver", "num_filters": 8, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.001},
+        {"id": "A2-HP-CNN-002", "model": "three_layer_convnet", "kind": "solver", "num_filters": 8, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.01},
+        {"id": "A2-HP-CNN-003", "model": "three_layer_convnet", "kind": "solver", "num_filters": 4, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.01},
+        {"id": "A2-HP-CNN-004", "model": "three_layer_convnet", "kind": "solver", "num_filters": 8, "filter_size": 3, "hidden_dim": 50, "weight_scale": 0.01, "reg": 0.01},
+        {"id": "A2-HP-CNN-005", "model": "three_layer_convnet", "kind": "solver", "num_filters": 16, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.001}
+      ]
+    },
+    "conv_learning_rate_search": {
+      "type": "hparam_tuning",
+      "result_group": "hparam_tuning",
+      "title": "ThreeLayerConvNet learning rate search",
+      "variants": [
+        {"id": "A2-HP-LR-001", "model": "three_layer_convnet", "kind": "solver", "learning_rate": 0.002, "num_filters": 8, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.001},
+        {"id": "A2-HP-LR-002", "model": "three_layer_convnet", "kind": "solver", "learning_rate": 0.001, "num_filters": 8, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.001},
+        {"id": "A2-HP-LR-003", "model": "three_layer_convnet", "kind": "solver", "learning_rate": 0.0005, "num_filters": 8, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.001}
+      ]
+    },
+    "fc_normalization_dropout_ablation": {
+      "type": "ablation",
+      "result_group": "ablation",
+      "title": "FullyConnectedNet normalization dropout ablation",
+      "variants": [
+        {"id": "A2-AB-FC-001", "model": "fully_connected", "kind": "solver", "hidden_dims": [100, 100], "normalization": null, "dropout_keep_ratio": 1.0, "weight_scale": 0.05, "reg": 0.1},
+        {"id": "A2-AB-FC-002", "model": "fully_connected", "kind": "solver", "hidden_dims": [100, 100], "normalization": "batchnorm", "dropout_keep_ratio": 1.0, "weight_scale": 0.05, "reg": 0.1},
+        {"id": "A2-AB-FC-003", "model": "fully_connected", "kind": "solver", "hidden_dims": [100, 100], "normalization": "layernorm", "dropout_keep_ratio": 1.0, "weight_scale": 0.05, "reg": 0.1},
+        {"id": "A2-AB-FC-004", "model": "fully_connected", "kind": "solver", "hidden_dims": [100, 100], "normalization": null, "dropout_keep_ratio": 0.8, "weight_scale": 0.05, "reg": 0.1},
+        {"id": "A2-AB-FC-005", "model": "fully_connected", "kind": "solver", "hidden_dims": [100, 100], "normalization": "batchnorm", "dropout_keep_ratio": 0.8, "weight_scale": 0.05, "reg": 0.1}
+      ]
+    },
+    "conv_regularization_ablation": {
+      "type": "ablation",
+      "result_group": "ablation",
+      "title": "ThreeLayerConvNet regularization ablation",
+      "variants": [
+        {"id": "A2-AB-CNN-001", "model": "three_layer_convnet", "kind": "solver", "num_filters": 8, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.0},
+        {"id": "A2-AB-CNN-002", "model": "three_layer_convnet", "kind": "solver", "num_filters": 8, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.001},
+        {"id": "A2-AB-CNN-003", "model": "three_layer_convnet", "kind": "solver", "num_filters": 8, "filter_size": 3, "hidden_dim": 100, "weight_scale": 0.01, "reg": 0.01}
+      ]
+    }
+  }
+}

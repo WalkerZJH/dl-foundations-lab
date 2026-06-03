@@ -1,0 +1,9 @@
+id,model,setting,train_acc,val_acc,test_acc,train_val_gap,final_loss,elapsed_seconds
+A1-HP-KNN-HARD-001,kNN,"kind=knn, k=1",,0.357,0.3513,,,150.84430742263794
+A1-HP-KNN-HARD-002,kNN,"kind=knn, k=3",,0.327,0.3281,,,150.84430742263794
+A1-HP-KNN-HARD-003,kNN,"kind=knn, k=5",,0.326,0.3392,,,150.84430742263794
+A1-HP-KNN-HARD-004,kNN,"kind=knn, k=7",,0.323,0.3359,,,150.84430742263794
+A1-HP-KNN-HARD-005,kNN,"kind=knn, k=9",,0.308,0.3386,,,150.84430742263794
+A1-HP-KNN-HARD-006,kNN,"kind=knn, k=11",,0.316,0.3412,,,150.84430742263794
+A1-HP-KNN-HARD-007,kNN,"kind=knn, k=13",,0.306,0.3414,,,150.84430742263794
+A1-HP-KNN-HARD-008,kNN,"kind=knn, k=15",,0.308,0.3389,,,150.84430742263794

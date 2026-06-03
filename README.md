@@ -28,17 +28,19 @@
 * `deliverables/week01_assignment1/week01_report.md`
 * `deliverables/week01_assignment1/assignment1_study_notes.md`
 * `deliverables/week01_assignment1/latex/week01_assignment1_report.tex`
-* `deliverables/week01_assignment1/latex/week01_assignment1_report.pdf`
-* `units/assignment1/README.md`
+* `deliverables/week01_assignment1/pdf/week01_assignment1_report.pdf`
+* `units/assignment1/code/README.md`
 * `units/assignment1/code/run_assignment1_experiments.py`
 * `deliverables/week02_assignment2/latex/week2_assignment2_report.tex`
-* `deliverables/week02_assignment2/latex/week2_assignment2_report.pdf`
-* `units/assignment2/README.md`
+* `deliverables/week02_assignment2/pdf/week2_assignment2_report.pdf`
+* `units/assignment2/code/README.md`
 * `units/assignment2/code/run_assignment2_experiments.py`
 
 说明：
 
 第 1 周重点为 CS231n Assignment 1 的学习与代码补全，主要围绕 kNN、Softmax 分类器、SVM、两层神经网络、多层全连接网络、常用网络层和优化器展开。Task1 简单神经网络框架会在 Assignment 1 的基础上继续推进。
+
+Assignment 1 当前已补充 full-data 探索实验结构，包含 kNN 的 `k` 值搜索、线性分类器学习率与正则搜索、TwoLayerNet 超参数搜索，以及初始化、优化器、归一化和 Dropout 消融。
 
 第 2 周重点为 CS231n Assignment 2 的学习与工程化整理，主要围绕归一化、dropout、卷积网络、PyTorch RNN/LSTM captioning 前向路径和统一实验归档展开。
 
@@ -54,28 +56,32 @@
 
 ### Assignment 1
 
-* 单元入口：`units/assignment1/README.md`
 * 核心代码包：`units/assignment1/code/cs231n/`
+* 代码入口说明：`units/assignment1/code/README.md`
 * 实验脚本：`units/assignment1/code/run_assignment1_experiments.py`
-* 项目结构说明：`units/assignment1/notes/assignment1_project_structure.md`
+* 探索脚本：`units/assignment1/code/run_assignment1_explorations.py`
+* 超参数调优记录：`units/assignment1/experiments/hparam_tuning.md`
+* 消融实验记录：`units/assignment1/experiments/ablation.md`
 * 实现规划：`units/assignment1/notes/assignment1_implementation_plan.md`
 * 实验结果：`units/assignment1/results/`
 
-复现实验时以 `run_assignment1_experiments.py` 为统一入口。
+复现 baseline 时以 `run_assignment1_experiments.py` 为入口；运行超参数搜索和消融实验时以 `run_assignment1_explorations.py` 为入口。
 
 Assignment 1 数据按课程脚本下载到 `units/assignment1/code/cs231n/datasets/`。该目录中的数据文件不提交到 GitHub，只保留 `get_datasets.sh`。
 
 ### Assignment 2
 
-* 单元入口：`units/assignment2/README.md`
 * 核心代码包：`units/assignment2/code/cs231n/`
+* 代码入口说明：`units/assignment2/code/README.md`
 * 实验脚本：`units/assignment2/code/run_assignment2_experiments.py`
+* 探索脚本：`units/assignment2/code/run_assignment2_explorations.py`
+* 超参数调优记录：`units/assignment2/experiments/hparam_tuning.md`
+* 消融实验记录：`units/assignment2/experiments/ablation.md`
 * 项目结构说明：`units/assignment2/notes/assignment2_project_structure.md`
-* 实现规划：`units/assignment2/notes/assignment2_implementation_plan.md`
 * 关键实现笔记：`units/assignment2/notes/assignment2_key_implementation_notes.md`
 * 实验结果：`units/assignment2/results/`
 
-复现实验时以 `run_assignment2_experiments.py` 为统一入口，当前 PyTorch 相关路径使用 conda `minimind` 环境运行。
+复现实验时以 `run_assignment2_experiments.py` 为统一入口，探索实验以 `run_assignment2_explorations.py` 为入口，当前 PyTorch 相关路径使用 conda `minimind` 环境运行。当前正式结果使用 CIFAR-10 完整训练设置；ThreeLayerConvNet baseline test acc 为 0.6151，容量搜索最佳 test acc 为 0.6350。
 
 Assignment 2 数据按课程脚本下载到 `units/assignment2/code/cs231n/datasets/`。该目录中的数据文件不提交到 GitHub，只保留下载脚本。
 
@@ -83,13 +89,12 @@ Assignment 2 数据按课程脚本下载到 `units/assignment2/code/cs231n/datas
 
 * 第 1 周成果目录：`deliverables/week01_assignment1/`
 * 第 1 周报告 LaTeX：`deliverables/week01_assignment1/latex/week01_assignment1_report.tex`
-* 第 1 周报告 PDF：`deliverables/week01_assignment1/latex/week01_assignment1_report.pdf`
+* 第 1 周报告 PDF：`deliverables/week01_assignment1/pdf/week01_assignment1_report.pdf`
 * 第 1 周周报：`deliverables/week01_assignment1/week01_report.md`
 * 第 1 周学习笔记：`deliverables/week01_assignment1/assignment1_study_notes.md`
 * 第 2 周成果目录：`deliverables/week02_assignment2/`
 * 第 2 周报告 LaTeX：`deliverables/week02_assignment2/latex/week2_assignment2_report.tex`
-* 第 2 周报告 PDF：`deliverables/week02_assignment2/latex/week2_assignment2_report.pdf`
+* 第 2 周报告 PDF：`deliverables/week02_assignment2/pdf/week2_assignment2_report.pdf`
 * 第 2 周周报：`deliverables/week02_assignment2/week2_report.md`
-* Assignment 2 方法补充：`deliverables/week02_assignment2/assignment2_method_supplement.md`
 
 阶段性总结、报告和可公开查看的 PDF 优先放入 `deliverables/`，过程代码和实验资产保留在 `units/`。

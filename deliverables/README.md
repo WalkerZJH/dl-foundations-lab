@@ -20,33 +20,45 @@
 * 整理 Assignment 1 的仓库结构，区分代码、学习笔记、实验结果和阶段成果归档。
 * 补全 kNN、Softmax、SVM、LinearClassifier、TwoLayerNet、FullyConnectedNet、常用网络层和优化器相关实现。
 * 将 Assignment 1 的实验流程统一到 `../units/assignment1/code/run_assignment1_experiments.py`。
-* 使用 CIFAR-10 子集运行实验，并生成指标表、实验日志和可视化图片。
-* 编写学习笔记、项目结构说明、实现规划和 LaTeX 报告。
+* 使用 CIFAR-10 完整训练设置运行 baseline 实验，并生成指标表、实验日志和可视化图片。
+* 建立探索实验 suite，完成 kNN、线性分类器、TwoLayerNet 和 FullyConnectedNet 的超参数搜索与消融实验。
+* 编写学习笔记、项目结构说明、实现规划和研究型 LaTeX 报告。
 
 ### 当前成果
 
 * 周报：`week01_assignment1/week01_report.md`
-* 报告 PDF：`week01_assignment1/latex/week01_assignment1_report.pdf`
-* 单元入口：`../units/assignment1/README.md`
+* 报告 PDF：`week01_assignment1/pdf/week01_assignment1_report.pdf`
+* 代码入口说明：`../units/assignment1/code/README.md`
 * 实验脚本：`../units/assignment1/code/run_assignment1_experiments.py`
+* 探索脚本：`../units/assignment1/code/run_assignment1_explorations.py`
 * 实验结果：`../units/assignment1/results/`
 
 ### 实验概况
 
-当前实验使用 CIFAR-10 子集：训练集 2000 张、验证集 500 张、测试集 500 张。kNN 使用完整实验子集进行距离计算，不再额外采样。
+当前正式实验使用 CIFAR-10 完整训练设置：训练集 49000 张、验证集 1000 张、测试集 10000 张。kNN 使用完整训练集并采用 chunked 距离计算。
 
 主要结果如下：
 
 | 模型 | 设置 | 训练准确率 | 验证准确率 | 测试准确率 |
 | --- | --- | ---: | ---: | ---: |
-| kNN | k=7, train=2000, val=500, test=500 | - | 0.2800 | 0.2320 |
-| Softmax | lr=1e-7, reg=2.5e4, iters=500 | 0.3410 | 0.3080 | 0.2960 |
-| TwoLayerNet | sgd_momentum, lr=0.001, epochs=3 | 0.2560 | 0.2820 | 0.2760 |
-| FullyConnectedNet | adam, lr=0.001, epochs=3 | 0.5700 | 0.2860 | 0.2320 |
+| kNN | k=1, train=49000, val=1000, test=10000 | - | 0.3570 | 0.3513 |
+| Softmax | lr=1e-7, reg=2.5e4, iters=1500 | 0.3314 | 0.3460 | 0.3312 |
+| TwoLayerNet | sgd_momentum, lr=0.001, epochs=10 | 0.2204 | 0.2440 | 0.2218 |
+| FullyConnectedNet | adam, lr=0.001, epochs=10 | 0.4670 | 0.4640 | 0.4360 |
+
+探索实验补充结果：
+
+| 实验 | 选中配置 | 验证准确率 | 测试准确率 |
+| --- | --- | ---: | ---: |
+| kNN hard / elbow | k=1 | 0.3570 | 0.3513 |
+| SVM lr/reg search | lr=1e-7, reg=1e4 | 0.3860 | 0.3760 |
+| TwoLayerNet lr search | lr=1e-4 | 0.4920 | 0.4802 |
+| Optimizer ablation | SGD | 0.4960 | 0.4855 |
+| Normalization ablation | no norm / no dropout | 0.4840 | 0.4637 |
 
 ### 阶段小结
 
-第 1 周完成了 Assignment 1 的第一轮工程化整理：从 Notebook 任务转为纯 Python 模块结构，并形成可复现实验入口。实验结果表明 Softmax 在当前小规模 CIFAR-10 子集上测试准确率最高，FullyConnectedNet 已出现一定过拟合，后续可围绕更充分的训练、正则化和 Task1 NumPy 神经网络框架继续推进。
+第 1 周完成了 Assignment 1 的工程化整理：从 Notebook 任务转为纯 Python 模块结构，并形成 baseline 与 full-data 探索实验入口。探索结果表明，TwoLayerNet 对学习率敏感，较大学习率会导致 loss 发散；在当前完整训练设置下，SGD 和较小学习率组合优于默认 momentum 配置。后续可围绕更充分的训练、正则化和 Task1 NumPy 神经网络框架继续推进。
 
 ## 第 2 周：CS231n Assignment 2
 
@@ -59,24 +71,24 @@
 * 补全 BatchNorm、LayerNorm、Dropout、卷积、池化、Spatial BatchNorm 和 GroupNorm。
 * 补全 Momentum、RMSProp、Adam、FullyConnectedNet、ThreeLayerConvNet 和 PyTorch RNN/LSTM captioning 前向路径。
 * 将 Assignment 2 的实验流程统一到 `../units/assignment2/code/run_assignment2_experiments.py`。
-* 使用 CIFAR-10 子集运行实验，并生成指标表、实验日志和可视化图片。
-* 编写项目结构说明、实现规划、关键实现笔记、方法补充和 LaTeX 报告。
+* 使用 CIFAR-10 完整训练设置运行 baseline、超参数搜索和消融实验，并生成指标表、实验日志和可视化图片。
+* 编写项目结构说明、关键实现笔记和 LaTeX 报告。
 
 ### 当前成果
 
-* 报告 PDF：`week02_assignment2/latex/week2_assignment2_report.pdf`
-* 方法补充：`week02_assignment2/assignment2_method_supplement.md`
-* 单元入口：`../units/assignment2/README.md`
+* 报告 PDF：`week02_assignment2/pdf/week2_assignment2_report.pdf`
+* 代码入口说明：`../units/assignment2/code/README.md`
 * 实验脚本：`../units/assignment2/code/run_assignment2_experiments.py`
 * 实验结果：`../units/assignment2/results/`
 
 ### 实验概况
 
-当前正式实验使用 CIFAR-10 子集：训练集 2000 张、验证集 500 张、测试集 500 张，训练 10 epochs。
+当前正式实验使用 CIFAR-10 完整训练设置：训练集 49000 张、验证集 1000 张、测试集 10000 张，训练 10 epochs。
 
 主要结果如下：
 
 | 模型 | 设置 | 训练准确率 | 验证准确率 | 测试准确率 |
 | --- | --- | ---: | ---: | ---: |
-| FullyConnectedNet + BN + Dropout | adam, lr=1e-3, epochs=10, hidden=[100,100], keep=0.8 | 0.5680 | 0.3420 | 0.3200 |
-| ThreeLayerConvNet | adam, lr=1e-3, epochs=10, filters=8, filter_size=3 | 0.8520 | 0.4620 | 0.4000 |
+| FullyConnectedNet + BN + Dropout | adam, lr=1e-3, epochs=10, hidden=[100,100], keep=0.8 | 0.3464 | 0.4010 | 0.3450 |
+| ThreeLayerConvNet | adam, lr=1e-3, epochs=10, filters=8, filter_size=3 | 0.7571 | 0.6110 | 0.6151 |
+| ThreeLayerConvNet capacity search | filters=16, hidden=100, reg=1e-3 | 0.7791 | 0.6440 | 0.6350 |

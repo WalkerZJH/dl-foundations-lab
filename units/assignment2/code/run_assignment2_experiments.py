@@ -35,13 +35,21 @@ from cs231n.solver import Solver
 
 
 ASSIGNMENT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-RESULTS_DIR = os.path.join(ASSIGNMENT_ROOT, "results")
+RESULTS_DIR = os.path.join(ASSIGNMENT_ROOT, "results", "baseline")
 FIGURES_DIR = os.path.join(RESULTS_DIR, "figures")
 SMOKE_ERROR_THRESHOLD = 1e-6
 
 
 def ensure_dirs():
     os.makedirs(FIGURES_DIR, exist_ok=True)
+
+
+def append_trace(message):
+    os.makedirs(RESULTS_DIR, exist_ok=True)
+    path = os.path.join(RESULTS_DIR, "run_trace.txt")
+    timestamp = time.strftime("%Y-%m-%dT%H:%M:%S")
+    with open(path, "a", encoding="utf-8") as f:
+        f.write("[%s] %s\n" % (timestamp, message))
 
 
 def rel_error(x, y):
@@ -194,7 +202,23 @@ def format_smoke_tests_for_log(smoke_tests):
     )
 
 
-def run_solver_model(model, data, name, setting, update_rule, learning_rate, epochs, batch_size):
+def solver_train_sample_count(value, train_size):
+    if value is None:
+        return None
+    return min(value, train_size)
+
+
+def run_solver_model(
+    model,
+    data,
+    name,
+    setting,
+    update_rule,
+    learning_rate,
+    epochs,
+    batch_size,
+    num_train_samples,
+):
     solver = Solver(
         model,
         data,
@@ -203,17 +227,23 @@ def run_solver_model(model, data, name, setting, update_rule, learning_rate, epo
         lr_decay=0.95,
         num_epochs=epochs,
         batch_size=batch_size,
-        num_train_samples=min(500, data["X_train"].shape[0]),
+        num_train_samples=solver_train_sample_count(
+            num_train_samples, data["X_train"].shape[0]
+        ),
         num_val_samples=None,
         print_every=100,
         verbose=False,
     )
     solver.train()
+    full_train_acc = solver.check_accuracy(
+        data["X_train"], data["y_train"], num_samples=None
+    )
     test_acc = solver.check_accuracy(data["X_test"], data["y_test"], num_samples=None)
     return {
         "model": name,
         "setting": setting,
-        "train_acc": float(solver.train_acc_history[-1]),
+        "train_acc": float(full_train_acc),
+        "history_train_acc": float(solver.train_acc_history[-1]),
         "val_acc": float(solver.best_val_acc),
         "test_acc": float(test_acc),
         "final_loss": float(solver.loss_history[-1]),
@@ -229,6 +259,10 @@ def run_cifar_experiments(args):
         num_validation=args.val_size,
         num_test=args.test_size,
     )
+    append_trace(
+        "loaded data train=%d val=%d test=%d"
+        % (args.train_size, args.val_size, args.test_size)
+    )
 
     fc_model = FullyConnectedNet(
         [100, 100],
@@ -239,6 +273,7 @@ def run_cifar_experiments(args):
         reg=0.1,
         weight_scale=5e-2,
     )
+    append_trace("start model FullyConnectedNet + BN + Dropout")
     fc_result = run_solver_model(
         fc_model,
         data,
@@ -248,6 +283,11 @@ def run_cifar_experiments(args):
         1e-3,
         args.epochs,
         args.batch_size,
+        args.num_train_samples,
+    )
+    append_trace(
+        "finish model FullyConnectedNet + BN + Dropout val_acc=%.4f test_acc=%.4f"
+        % (fc_result["val_acc"], fc_result["test_acc"])
     )
 
     conv_model = ThreeLayerConvNet(
@@ -257,6 +297,7 @@ def run_cifar_experiments(args):
         weight_scale=1e-2,
         reg=1e-3,
     )
+    append_trace("start model ThreeLayerConvNet")
     conv_result = run_solver_model(
         conv_model,
         data,
@@ -269,6 +310,11 @@ def run_cifar_experiments(args):
         1e-3,
         args.epochs,
         args.batch_size,
+        args.num_train_samples,
+    )
+    append_trace(
+        "finish model ThreeLayerConvNet val_acc=%.4f test_acc=%.4f"
+        % (conv_result["val_acc"], conv_result["test_acc"])
     )
 
     return data, [fc_result, conv_result]
@@ -283,6 +329,7 @@ def save_metrics(results):
                 "model",
                 "setting",
                 "train_acc",
+                "history_train_acc",
                 "val_acc",
                 "test_acc",
                 "final_loss",
@@ -295,6 +342,7 @@ def save_metrics(results):
                     "model": item["model"],
                     "setting": item["setting"],
                     "train_acc": item["train_acc"],
+                    "history_train_acc": item["history_train_acc"],
                     "val_acc": item["val_acc"],
                     "test_acc": item["test_acc"],
                     "final_loss": item["final_loss"],
@@ -317,12 +365,13 @@ def save_summary(summary):
         f.write("## 数据与配置\n\n")
         cfg = summary["config"]
         f.write(
-            f"* CIFAR-10 子集：train={cfg['train_size']}，"
+            f"* CIFAR-10 完整训练设置：train={cfg['train_size']}，"
             f"val={cfg['val_size']}，test={cfg['test_size']}。\n"
         )
         f.write(
             f"* 训练配置：epochs={cfg['epochs']}，batch_size={cfg['batch_size']}，"
-            f"conv_filters={cfg['conv_filters']}。\n"
+            f"conv_filters={cfg['conv_filters']}，"
+            f"num_train_samples={cfg['num_train_samples']}。\n"
         )
         f.write("\n## 烟测结果\n\n")
         f.write("| 检查项 | 结果 |\n")
@@ -331,7 +380,7 @@ def save_summary(summary):
             f.write(f"| {item['name']} | {item['status']} |\n")
         f.write("\n烟测只用于确认实现路径可运行，不参与正式模型性能比较。\n\n")
         f.write("## 正式模型结果\n\n")
-        f.write("| 模型 | 设置 | 训练准确率 | 验证准确率 | 测试准确率 | 最终 loss |\n")
+        f.write("| 模型 | 设置 | 完整训练准确率 | 验证准确率 | 测试准确率 | 最终 loss |\n")
         f.write("| --- | --- | ---: | ---: | ---: | ---: |\n")
         for item in summary["results"]:
             f.write(
@@ -341,7 +390,7 @@ def save_summary(summary):
         f.write("\n## 说明\n\n")
         f.write(
             "正式结果仅来自 CIFAR-10 训练实验；烟测结果只记录通过或失败。"
-            "当前正式训练轮数为 10 epochs。\n"
+            f"当前正式训练轮数为 {cfg['epochs']} epochs。\n"
         )
 
 
@@ -377,12 +426,13 @@ def save_plots(results):
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Run Assignment 2 archive experiments.")
-    parser.add_argument("--train-size", type=int, default=2000)
-    parser.add_argument("--val-size", type=int, default=500)
-    parser.add_argument("--test-size", type=int, default=500)
+    parser.add_argument("--train-size", type=int, default=49000)
+    parser.add_argument("--val-size", type=int, default=1000)
+    parser.add_argument("--test-size", type=int, default=10000)
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--batch-size", type=int, default=100)
     parser.add_argument("--conv-filters", type=int, default=8)
+    parser.add_argument("--num-train-samples", type=int, default=None)
     return parser.parse_args()
 
 
@@ -391,10 +441,12 @@ def main():
     ensure_dirs()
     np.random.seed(42)
     start = time.time()
+    append_trace("baseline started")
 
     numpy_smoke = run_numpy_layer_smoke()
     pytorch_rnn_smoke = run_pytorch_rnn_smoke()
     smoke_tests = [numpy_smoke, pytorch_rnn_smoke]
+    append_trace("smoke tests completed")
     data, results = run_cifar_experiments(args)
     elapsed = time.time() - start
 
@@ -405,6 +457,7 @@ def main():
         "epochs": args.epochs,
         "batch_size": args.batch_size,
         "conv_filters": args.conv_filters,
+        "num_train_samples": args.num_train_samples,
     }
     log_lines = [
         "Assignment 2 experiment log",
@@ -431,6 +484,7 @@ def main():
     save_metrics(results)
     save_plots(results)
     save_summary(summary)
+    append_trace("baseline completed elapsed_seconds=%.2f" % elapsed)
 
     print("\n".join(log_lines))
 

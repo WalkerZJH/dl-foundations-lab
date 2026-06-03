@@ -1,0 +1,12 @@
+[2026-06-01T21:02:25] suite started: fc_normalization_dropout_ablation completed=0
+[2026-06-01T21:02:25] start variant A2-AB-FC-001 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T21:03:50] finish variant A2-AB-FC-001 val_acc=0.4420 test_acc=0.4394
+[2026-06-01T21:03:50] start variant A2-AB-FC-002 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T21:05:15] finish variant A2-AB-FC-002 val_acc=0.4430 test_acc=0.4118
+[2026-06-01T21:05:15] start variant A2-AB-FC-003 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T21:06:47] finish variant A2-AB-FC-003 val_acc=0.4380 test_acc=0.4144
+[2026-06-01T21:06:47] start variant A2-AB-FC-004 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T21:09:14] finish variant A2-AB-FC-004 val_acc=0.2870 test_acc=0.2577
+[2026-06-01T21:09:14] start variant A2-AB-FC-005 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T21:11:45] finish variant A2-AB-FC-005 val_acc=0.2700 test_acc=0.1728
+[2026-06-01T21:11:45] suite completed selected=A2-AB-FC-002

@@ -1,0 +1,4 @@
+model,setting,train_acc,val_acc,test_acc
+Softmax,"lr=1e-7, reg=2.5e4, iters=1500",0.3313673469387755,0.346,0.3312
+TwoLayerNet,"sgd_momentum, lr=0.001, epochs=10",0.2203877551020408,0.244,0.2218
+FullyConnectedNet,"adam, lr=0.001, epochs=10",0.4670408163265306,0.464,0.436

@@ -1,7 +1,0 @@
-Assignment 2 experiment log
-X_train=(2000, 3, 32, 32), X_val=(500, 3, 32, 32), X_test=(500, 3, 32, 32)
-config={"train_size": 2000, "val_size": 500, "test_size": 500, "epochs": 10, "batch_size": 100, "conv_filters": 8}
-smoke_tests=numpy_layer_gradient_smoke: passed; pytorch_rnn_captioning_smoke: passed
-FullyConnectedNet + BN + Dropout: setting=adam, lr=1e-3, epochs=10, hidden=[100,100], keep=0.8, train_acc=0.5680, val_acc=0.3420, test_acc=0.3200, final_loss=2.2012
-ThreeLayerConvNet: setting=adam, lr=1e-3, epochs=10, filters=8, filter_size=3, train_acc=0.8520, val_acc=0.4620, test_acc=0.4000, final_loss=0.4084
-elapsed_seconds=36.69

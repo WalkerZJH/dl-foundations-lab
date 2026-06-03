@@ -1,0 +1,4 @@
+id,model,setting,train_acc,val_acc,test_acc,train_val_gap,final_loss,elapsed_seconds
+A1-HP-LR-001,two_layer,"kind=solver, model=two_layer, learning_rate=0.01, reg=0.1, hidden_dim=100, batch_size=200, epochs=10, update_rule=sgd_momentum",0.10026530612244898,0.167,0.1533,-0.06673469387755103,nan,41.87546396255493
+A1-HP-LR-002,two_layer,"kind=solver, model=two_layer, learning_rate=0.001, reg=0.1, hidden_dim=100, batch_size=200, epochs=10, update_rule=sgd_momentum",0.2319387755102041,0.228,0.2303,0.003938775510204079,8.148023600386341e+40,42.051427125930786
+A1-HP-LR-003,two_layer,"kind=solver, model=two_layer, learning_rate=0.0001, reg=0.1, hidden_dim=100, batch_size=200, epochs=10, update_rule=sgd_momentum",0.5468979591836735,0.492,0.4802,0.05489795918367346,2.2910196659975255,41.246774673461914

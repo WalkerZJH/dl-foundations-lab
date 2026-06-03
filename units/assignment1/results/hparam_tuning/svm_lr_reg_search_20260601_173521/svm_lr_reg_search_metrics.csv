@@ -1,0 +1,4 @@
+id,model,setting,train_acc,val_acc,test_acc,train_val_gap,final_loss,elapsed_seconds
+A1-HP-SVM-001,LinearSVM,"kind=linear, classifier=svm, learning_rate=1e-07, reg=10000.0, batch_size=200, num_iters=1500",0.38418367346938775,0.386,0.376,-0.0018163265306122556,5.578761037551996,4.098886489868164
+A1-HP-SVM-002,LinearSVM,"kind=linear, classifier=svm, learning_rate=1e-07, reg=25000.0, batch_size=200, num_iters=1500",0.3695510204081633,0.378,0.3665,-0.008448979591836714,5.149591781075513,5.818633317947388
+A1-HP-SVM-003,LinearSVM,"kind=linear, classifier=svm, learning_rate=5e-08, reg=25000.0, batch_size=200, num_iters=1500",0.3726734693877551,0.383,0.3726,-0.010326530612244922,5.557970878510434,5.6559107303619385

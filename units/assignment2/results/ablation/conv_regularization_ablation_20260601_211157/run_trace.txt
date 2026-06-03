@@ -1,0 +1,8 @@
+[2026-06-01T21:11:57] suite started: conv_regularization_ablation completed=0
+[2026-06-01T21:11:57] start variant A2-AB-CNN-001 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T21:24:20] finish variant A2-AB-CNN-001 val_acc=0.6140 test_acc=0.6091
+[2026-06-01T21:24:20] start variant A2-AB-CNN-002 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T21:37:10] finish variant A2-AB-CNN-002 val_acc=0.6140 test_acc=0.6006
+[2026-06-01T21:37:10] start variant A2-AB-CNN-003 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T21:49:56] finish variant A2-AB-CNN-003 val_acc=0.6100 test_acc=0.6157
+[2026-06-01T21:49:56] suite completed selected=A2-AB-CNN-001

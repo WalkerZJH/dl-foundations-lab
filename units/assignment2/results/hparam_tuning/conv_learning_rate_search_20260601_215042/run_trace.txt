@@ -1,0 +1,8 @@
+[2026-06-01T21:50:42] suite started: conv_learning_rate_search completed=0
+[2026-06-01T21:50:42] start variant A2-HP-LR-001 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T22:03:26] finish variant A2-HP-LR-001 val_acc=0.5740 test_acc=0.5768
+[2026-06-01T22:03:26] start variant A2-HP-LR-002 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T22:16:23] finish variant A2-HP-LR-002 val_acc=0.6140 test_acc=0.6006
+[2026-06-01T22:16:23] start variant A2-HP-LR-003 data={"train_size": 49000, "val_size": 1000, "test_size": 10000}
+[2026-06-01T22:29:15] finish variant A2-HP-LR-003 val_acc=0.6020 test_acc=0.6110
+[2026-06-01T22:29:15] suite completed selected=A2-HP-LR-002

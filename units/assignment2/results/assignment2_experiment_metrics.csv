@@ -1,3 +1,0 @@
-model,setting,train_acc,val_acc,test_acc,final_loss
-FullyConnectedNet + BN + Dropout,"adam, lr=1e-3, epochs=10, hidden=[100,100], keep=0.8",0.568,0.342,0.32,2.201204109485674
-ThreeLayerConvNet,"adam, lr=1e-3, epochs=10, filters=8, filter_size=3",0.852,0.462,0.4,0.40842860433966227

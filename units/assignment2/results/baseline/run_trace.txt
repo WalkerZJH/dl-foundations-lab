@@ -1,0 +1,8 @@
+[2026-06-01T20:46:05] baseline started
+[2026-06-01T20:46:07] smoke tests completed
+[2026-06-01T20:46:09] loaded data train=49000 val=1000 test=10000
+[2026-06-01T20:46:09] start model FullyConnectedNet + BN + Dropout
+[2026-06-01T20:48:41] finish model FullyConnectedNet + BN + Dropout val_acc=0.4010 test_acc=0.3450
+[2026-06-01T20:48:41] start model ThreeLayerConvNet
+[2026-06-01T21:01:41] finish model ThreeLayerConvNet val_acc=0.6110 test_acc=0.6151
+[2026-06-01T21:01:42] baseline completed elapsed_seconds=936.32

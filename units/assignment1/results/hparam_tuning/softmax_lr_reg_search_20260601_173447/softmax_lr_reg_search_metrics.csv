@@ -1,0 +1,5 @@
+id,model,setting,train_acc,val_acc,test_acc,train_val_gap,final_loss,elapsed_seconds
+A1-HP-SM-001,Softmax,"kind=linear, classifier=softmax, learning_rate=1e-07, reg=10000.0, batch_size=200, num_iters=1500",0.3545510204081633,0.378,0.3523,-0.023448979591836727,2.744133470870459,4.297601222991943
+A1-HP-SM-002,Softmax,"kind=linear, classifier=softmax, learning_rate=1e-07, reg=25000.0, batch_size=200, num_iters=1500",0.3313673469387755,0.346,0.3312,-0.014632653061224465,2.0866927550233982,5.741157293319702
+A1-HP-SM-003,Softmax,"kind=linear, classifier=softmax, learning_rate=5e-08, reg=25000.0, batch_size=200, num_iters=1500",0.33018367346938776,0.346,0.3292,-0.015816326530612212,2.499984810123853,5.808136224746704
+A1-HP-SM-004,Softmax,"kind=linear, classifier=softmax, learning_rate=2e-07, reg=25000.0, batch_size=200, num_iters=1500",0.3279795918367347,0.343,0.3309,-0.01502040816326533,2.085934628472398,5.786196708679199
