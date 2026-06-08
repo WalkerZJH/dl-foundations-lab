@@ -158,6 +158,9 @@ desktop.ini
 # =========================
 # Temporary files
 # =========================
+
+# Local hidden folders, such as tool caches.
+.*/
 tmp/
 temp/
 .cache/
