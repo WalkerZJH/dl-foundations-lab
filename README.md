@@ -63,6 +63,7 @@ Assignment 1 当前已补充 full-data 探索实验结构，包含 kNN 的 `k` �
 * 超参数调优记录：`units/assignment1/experiments/hparam_tuning.md`
 * 消融实验记录：`units/assignment1/experiments/ablation.md`
 * 实现规划：`units/assignment1/notes/assignment1_implementation_plan.md`
+* Dropout seed 错误归档：`units/assignment1/notes/assignment1_dropout_seed_error_archive.md`
 * 实验结果：`units/assignment1/results/`
 
 复现 baseline 时以 `run_assignment1_experiments.py` 为入口；运行超参数搜索和消融实验时以 `run_assignment1_explorations.py` 为入口。

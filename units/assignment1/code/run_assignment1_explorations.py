@@ -120,7 +120,7 @@ def build_model(variant, data):
             normalization=variant.get("normalization"),
             reg=variant.get("reg", 0.0),
             weight_scale=variant.get("weight_scale", 1e-2),
-            seed=123,
+            seed=variant.get("seed"),
         )
     else:
         raise ValueError("Unknown model: %s" % variant["model"])

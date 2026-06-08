@@ -33,7 +33,7 @@ Momentum 在当前学习率下表现不稳定；Adam 稳定但测试准确率低
 | 改变的因素 | FullyConnectedNet 中的 BatchNorm、LayerNorm、Dropout。 |
 | 对照组 | 不使用 normalization/dropout 的同结构全连接网络。 |
 | 控制变量 | 网络层数、隐藏维度、优化器、学习率、正则强度和训练轮数。 |
-| 结果位置 | `../results/ablation/normalization_dropout_ablation_20260601_174826/` |
-| 观察结果 | 无归一化且无 Dropout 的配置取得 val acc 0.4840、test acc 0.4637；BatchNorm 和 LayerNorm 未超过对照组；Dropout 单独使用明显降低表现。 |
+| 结果位置 | `../results/ablation/normalization_dropout_ablation_20260608_115235/` |
+| 观察结果 | 无归一化且无 Dropout 的配置取得 val acc 0.4840、test acc 0.4637；BatchNorm 和 LayerNorm 未超过对照组；Dropout 单独使用取得 val acc 0.4480、test acc 0.4383。 |
 
-当前全连接网络层数较浅、训练轮数有限，归一化没有带来稳定收益；Dropout 在该容量和数据设置下更像是降低有效容量。
+当前全连接网络层数较浅、训练轮数有限，归一化没有带来稳定收益；Dropout 单独使用后验证集和测试集准确率低于无 Dropout 对照，但修正随机种子使用方式后，loss 曲线不再出现旧结果中的周期性尖峰。

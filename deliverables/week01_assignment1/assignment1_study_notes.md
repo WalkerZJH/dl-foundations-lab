@@ -21,4 +21,4 @@ Assignment 1 的核心价值在于把损失函数、梯度、反向传播和优�
 
 当前 full-data 实验使用 49000 张训练图像、1000 张验证图像和 10000 张测试图像。kNN 的 hard search 与 elbow 选择均落在 `k=1`，测试准确率为 0.3513。Softmax 搜索的最佳测试准确率为 0.3523，SVM 搜索达到 0.3760。TwoLayerNet 对学习率非常敏感，`1e-2` 发散为 NaN，`1e-4` 达到测试准确率 0.4802。
 
-进一步探索后，优化器消融中 SGD 取得测试准确率 0.4855，优于同一学习率下的 Momentum 和 Adam；FullyConnectedNet 的归一化/Dropout 消融中，无归一化且无 Dropout 的配置取得测试准确率 0.4637。当前观察强化了两个判断：调参需要优先看验证集和 loss 曲线，模块效果需要放在相同训练配置下比较。
+进一步探索后，优化器消融中 SGD 取得测试准确率 0.4855，优于同一学习率下的 Momentum 和 Adam；FullyConnectedNet 的归一化/Dropout 消融在修正固定 dropout seed 后重跑，无归一化且无 Dropout 的配置取得测试准确率 0.4637，Dropout 单独使用取得 0.4383。当前观察强化了两个判断：调参需要优先看验证集和 loss 曲线，模块效果需要放在相同训练配置下比较。

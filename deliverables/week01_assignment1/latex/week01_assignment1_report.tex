@@ -15,7 +15,7 @@
   {../../../units/assignment1/results/hparam_tuning/svm_lr_reg_search_20260601_173521/}
   {../../../units/assignment1/results/hparam_tuning/two_layer_lr_search_20260601_173552/}
   {../../../units/assignment1/results/ablation/optimizer_ablation_20260601_174556/}
-  {../../../units/assignment1/results/ablation/normalization_dropout_ablation_20260601_174826/}
+  {../../../units/assignment1/results/ablation/normalization_dropout_ablation_20260608_115235/}
 }
 
 \newcommand{\todoitem}[1]{\textbf{待补充：}#1}
@@ -160,11 +160,7 @@ FullyConnectedNet & Adam, lr=0.001, epochs=10 & 0.4670 & 0.4640 & 0.4360 \\
 \caption{Assignment 1 baseline 实验结果}
 \end{table}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.84\linewidth]{assignment1_loss_curves.png}
-\caption{Assignment 1 baseline 训练损失曲线}
-\end{figure}
+baseline 中的 TwoLayerNet 使用固定 $lr=10^{-3}$ 和 momentum 配置，loss 在后期放大到 $10^{37}$ 量级。该曲线反映的是数值发散，不适合作为收敛曲线展示，因此报告中保留准确率对比图，并在学习率搜索部分用表格记录发散现象。
 
 \begin{figure}[H]
 \centering
@@ -254,19 +250,21 @@ A1-HP-LR-003 & $10^{-4}$ & loss 稳定下降 & 0.4920 & 0.4802 \\
 \caption{Assignment 1 消融实验结果}
 \end{table}
 
+优化器消融中，Momentum 在相同学习率下出现明显数值发散，loss 达到 $10^{40}$ 量级。该现象更适合用表格和文字说明，不作为收敛曲线插图。
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.84\linewidth]{optimizer_ablation_loss_curves.png}
-\caption{优化器消融损失曲线}
+\includegraphics[width=0.84\linewidth]{normalization_dropout_ablation_loss_curves.png}
+\caption{修正固定 dropout seed 后的归一化与 Dropout 消融损失曲线}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.84\linewidth]{normalization_dropout_ablation_accuracy.png}
-\caption{归一化与 Dropout 消融准确率对比}
+\caption{修正固定 dropout seed 后的归一化与 Dropout 消融准确率对比}
 \end{figure}
 
-初始化消融中，零初始化接近随机猜测，符合隐藏单元对称性无法有效破缺的预期。He 初始化在固定 $lr=10^{-3}$ 的 momentum 配置下验证准确率略高，但 final loss 偏大，说明初始化方式需要和学习率共同判断。优化器消融中 SGD 取得最高验证和测试准确率，Momentum 在同一学习率下发散，Adam 则稳定但测试准确率低于 SGD。归一化/dropout 消融中，无归一化且不使用 Dropout 的全连接网络表现最好；BatchNorm 和 LayerNorm 在当前浅层、短训练配置下没有带来提升，Dropout 单独使用明显降低容量。
+初始化消融中，零初始化接近随机猜测，符合隐藏单元对称性无法有效破缺的预期。He 初始化在固定 $lr=10^{-3}$ 的 momentum 配置下验证准确率略高，但 final loss 偏大，说明初始化方式需要和学习率共同判断。优化器消融中 SGD 取得最高验证和测试准确率，Momentum 在同一学习率下发散，Adam 则稳定但测试准确率低于 SGD。归一化/dropout 消融中，无归一化且不使用 Dropout 的全连接网络表现最好；BatchNorm 和 LayerNorm 在当前浅层、短训练配置下没有带来提升。修正固定 dropout seed 后，Dropout 单独使用的测试准确率为 0.4383，低于无 Dropout 对照，但旧结果中的周期性 loss 尖峰已经消失。
 
 \section{问题、调试过程与解决方案}
 

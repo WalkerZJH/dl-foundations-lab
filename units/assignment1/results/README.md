@@ -34,7 +34,7 @@ kNN 的 full-data 结果由 chunked 探索脚本生成，保存在 `hparam_tunin
 
 - `ablation/init_ablation_20260601_174349/`：初始化方式消融；
 - `ablation/optimizer_ablation_20260601_174556/`：优化器消融；
-- `ablation/normalization_dropout_ablation_20260601_174826/`：归一化与 Dropout 消融。
+- `ablation/normalization_dropout_ablation_20260608_115235/`：归一化与 Dropout 消融。
 
 每个 suite 输出目录包含：
 
