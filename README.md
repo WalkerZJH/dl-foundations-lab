@@ -23,6 +23,10 @@
 
 * `deliverables/week02_assignment2/`
 
+第 3 周：2026.06.02 - 2026.06.08
+
+期末备考周，不单独新设成果目录或报告。本周主要完成 Assignment 1 Dropout 固定 seed 异常定位、消融实验重跑、错误归档和第 1 周报告修订，记录见 `deliverables/README.md`。
+
 主要文件：
 
 * `deliverables/week01_assignment1/week01_report.md`
@@ -43,6 +47,8 @@
 Assignment 1 当前已补充 full-data 探索实验结构，包含 kNN 的 `k` 值搜索、线性分类器学习率与正则搜索、TwoLayerNet 超参数搜索，以及初始化、优化器、归一化和 Dropout 消融。
 
 第 2 周重点为 CS231n Assignment 2 的学习与工程化整理，主要围绕归一化、dropout、卷积网络、PyTorch RNN/LSTM captioning 前向路径和统一实验归档展开。
+
+第 3 周不新增阶段目录，重点是对 Assignment 1 既有成果做质量修订：修正 Dropout seed 误用、更新归一化/Dropout 消融结果，并同步周报时间线。
 
 ## 当前任务进度
 

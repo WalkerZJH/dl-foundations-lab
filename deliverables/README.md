@@ -8,6 +8,7 @@
 | --- | --- | --- | --- | --- |
 | 第 1 周 | 2026.05.18 - 2026.05.24 | CS231n Assignment 1：基础分类器与全连接网络 | 已完成第一轮实现、实验和报告整理 | `week01_assignment1/` |
 | 第 2 周 | 2026.05.25 - 2026.05.30 | CS231n Assignment 2：归一化、卷积网络与 RNN 前向路径 | 已完成第一轮实现、实验和报告整理 | `week02_assignment2/` |
+| 第 3 周 | 2026.06.02 - 2026.06.08 | Assignment 1 Dropout 异常更正与报告修订 | 期末备考周，不单独设成果目录 | 本时间线记录 |
 
 ## 第 1 周：CS231n Assignment 1
 
@@ -92,3 +93,18 @@
 | FullyConnectedNet + BN + Dropout | adam, lr=1e-3, epochs=10, hidden=[100,100], keep=0.8 | 0.3464 | 0.4010 | 0.3450 |
 | ThreeLayerConvNet | adam, lr=1e-3, epochs=10, filters=8, filter_size=3 | 0.7571 | 0.6110 | 0.6151 |
 | ThreeLayerConvNet capacity search | filters=16, hidden=100, reg=1e-3 | 0.7791 | 0.6440 | 0.6350 |
+
+## 第 3 周：Assignment 1 Dropout 异常更正
+
+时间范围：2026.06.02 - 2026.06.08
+
+本周处于期末备考阶段，不新设阶段目录，也不新增独立成果报告。主要工作集中在 Assignment 1 的 Dropout 消融实验复核与更正：
+
+* 定位 `run_assignment1_explorations.py` 中正式训练误传固定 `seed=123` 的问题。
+* 确认旧 Dropout 曲线的周期性尖峰来自每次 `dropout_forward()` 重置全局随机数状态，而不是测试集 loss 混入。
+* 修正探索脚本，使 dropout seed 只在 suite 显式配置时传入。
+* 重跑 `normalization_dropout_ablation`，正式结果更新为 `../units/assignment1/results/ablation/normalization_dropout_ablation_20260608_115235/`。
+* 新增错误归档笔记：`../units/assignment1/notes/assignment1_dropout_seed_error_archive.md`。
+* 修订第 1 周 LaTeX 报告，移除发散型 baseline/optimizer loss 图，改用文字说明，并纳入修正后的 Dropout 消融图。
+
+该周工作属于已有 Assignment 1 成果的质量修订，相关代码、结果和报告仍归入 `../units/assignment1/` 与 `week01_assignment1/`。
