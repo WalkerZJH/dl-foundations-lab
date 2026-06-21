@@ -1,0 +1,9 @@
+{
+  "selected_run_id": "baseline_mlp",
+  "selection_metric": "validation_accuracy",
+  "best_validation_accuracy": 0.4648,
+  "test_metrics": {
+    "loss": 1.5571605995178224,
+    "accuracy": 0.4627
+  }
+}

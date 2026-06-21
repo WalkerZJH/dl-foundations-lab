@@ -1,0 +1,31 @@
+{
+  "linear_output": [
+    5,
+    4
+  ],
+  "linear_backward": [
+    5,
+    6
+  ],
+  "conv_output": [
+    4,
+    3,
+    8,
+    8
+  ],
+  "conv_backward": [
+    4,
+    2,
+    8,
+    8
+  ],
+  "batchnorm_output": [
+    7,
+    4
+  ],
+  "batchnorm_backward": [
+    7,
+    4
+  ],
+  "passed": true
+}

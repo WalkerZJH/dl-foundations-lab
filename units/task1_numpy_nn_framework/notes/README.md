@@ -1,3 +1,6 @@
-# Task1 学习笔记
+# Task1 实现笔记索引
 
-本目录用于保存 NumPy 神经网络框架任务的学习笔记、设计记录和调试问题。
+* `project_structure.md`：目录与模块边界。
+* `implementation_plan.md`：实现和验证顺序。
+* `key_implementation_notes.md`：forward/backward、状态与断点设计。
+* `debug_notes.md`：本轮调试问题及修正。

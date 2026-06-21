@@ -1,0 +1,56 @@
+{
+  "suite": "learning_rate_search",
+  "selected_run_id": "lr_0p003",
+  "selection_metric": "validation_accuracy",
+  "test_evaluated_after_selection": true,
+  "runs": [
+    {
+      "run_id": "lr_0p0005",
+      "model": "mlp",
+      "batchnorm": false,
+      "dropout_keep_ratio": 1.0,
+      "learning_rate": 0.0005,
+      "best_epoch": 34,
+      "train_accuracy_at_selection": 0.9753381066030231,
+      "best_validation_accuracy": 0.9628252788104089,
+      "validation_loss_at_selection": 0.2052850662928388,
+      "test_accuracy": "",
+      "test_loss": "",
+      "selected_by_validation": false,
+      "runtime_seconds": 0.5729891000082716,
+      "parameter_count": 9610
+    },
+    {
+      "run_id": "lr_0p001",
+      "model": "mlp",
+      "batchnorm": false,
+      "dropout_keep_ratio": 1.0,
+      "learning_rate": 0.001,
+      "best_epoch": 40,
+      "train_accuracy_at_selection": 0.9960222752585521,
+      "best_validation_accuracy": 0.9814126394052045,
+      "validation_loss_at_selection": 0.1165859120130208,
+      "test_accuracy": "",
+      "test_loss": "",
+      "selected_by_validation": false,
+      "runtime_seconds": 0.5874264000012772,
+      "parameter_count": 9610
+    },
+    {
+      "run_id": "lr_0p003",
+      "model": "mlp",
+      "batchnorm": false,
+      "dropout_keep_ratio": 1.0,
+      "learning_rate": 0.003,
+      "best_epoch": 26,
+      "train_accuracy_at_selection": 0.9992044550517104,
+      "best_validation_accuracy": 0.9851301115241635,
+      "validation_loss_at_selection": 0.09359731425450213,
+      "test_accuracy": 0.981549815498155,
+      "test_loss": 0.07171587416775921,
+      "selected_by_validation": true,
+      "runtime_seconds": 0.6324797999986913,
+      "parameter_count": 9610
+    }
+  ]
+}

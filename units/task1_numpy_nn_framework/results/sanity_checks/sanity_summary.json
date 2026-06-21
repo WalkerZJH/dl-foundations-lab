@@ -1,0 +1,7 @@
+{
+  "shape_check": true,
+  "gradient_check": true,
+  "train_eval_check": true,
+  "conv_consistency": true,
+  "all_passed": true
+}

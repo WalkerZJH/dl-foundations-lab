@@ -1,0 +1,9 @@
+{
+  "selected_run_id": "with_dropout",
+  "selection_metric": "validation_accuracy",
+  "best_validation_accuracy": 0.9851301115241635,
+  "test_metrics": {
+    "loss": 0.09673351272242373,
+    "accuracy": 0.974169741697417
+  }
+}

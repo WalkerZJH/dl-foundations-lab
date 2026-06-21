@@ -1,0 +1,13 @@
+{
+  "linear_dx_error": 5.581415660001956e-11,
+  "linear_dw_error": 1.6880785456795022e-10,
+  "linear_db_error": 5.267821126047367e-11,
+  "batchnorm_dx_error": 5.929777006976515e-11,
+  "batchnorm_dgamma_error": 1.5387254539950287e-11,
+  "batchnorm_dbeta_error": 1.4501996802746127e-11,
+  "conv_dx_error": 8.974867137537767e-09,
+  "conv_dw_error": 2.445168668190484e-09,
+  "conv_db_error": 5.5687881202919685e-11,
+  "threshold": 1e-06,
+  "passed": true
+}

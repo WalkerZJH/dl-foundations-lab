@@ -1,0 +1,3 @@
+﻿implementation,mean_forward_seconds,repeats,vectorized_speedup
+naive,0.2805606999997205,3,317.1252405505718
+vectorized,0.0008846999990055338,3,317.1252405505718

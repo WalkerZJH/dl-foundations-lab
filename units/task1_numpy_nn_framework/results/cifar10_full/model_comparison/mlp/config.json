@@ -1,0 +1,29 @@
+{
+  "seed": 42,
+  "dataset": {
+    "name": "cifar10",
+    "path": "units/assignment1/code/cs231n/datasets/cifar-10-batches-py",
+    "validation_ratio": 0.1
+  },
+  "model": {
+    "name": "mlp",
+    "input_shape": [
+      3,
+      32,
+      32
+    ],
+    "num_classes": 10,
+    "dtype": "float32",
+    "hidden_dim": 128,
+    "batchnorm": false,
+    "dropout_keep_ratio": 1.0
+  },
+  "training": {
+    "epochs": 40,
+    "batch_size": 64,
+    "optimizer": "adam",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001
+  },
+  "run_id": "mlp"
+}

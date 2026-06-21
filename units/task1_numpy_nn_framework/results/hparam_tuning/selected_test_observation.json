@@ -1,0 +1,9 @@
+{
+  "selected_run_id": "lr_0p003",
+  "selection_metric": "validation_accuracy",
+  "best_validation_accuracy": 0.9851301115241635,
+  "test_metrics": {
+    "loss": 0.07171587416775921,
+    "accuracy": 0.981549815498155
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "suite": "baseline",
+  "selected_run_id": "baseline_mlp",
+  "selection_metric": "validation_accuracy",
+  "test_evaluated_after_selection": true,
+  "runs": [
+    {
+      "run_id": "baseline_mlp",
+      "model": "mlp",
+      "batchnorm": false,
+      "dropout_keep_ratio": 1.0,
+      "learning_rate": 0.001,
+      "best_epoch": 40,
+      "train_accuracy_at_selection": 0.9960222752585521,
+      "best_validation_accuracy": 0.9814126394052045,
+      "validation_loss_at_selection": 0.1165859120130208,
+      "test_accuracy": 0.981549815498155,
+      "test_loss": 0.09290256468860271,
+      "selected_by_validation": true,
+      "runtime_seconds": 0.6084941000008257,
+      "parameter_count": 9610
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "dropout_train_outputs_differ": true,
+  "dropout_eval_is_identity": true,
+  "dropout_eval_is_deterministic": true,
+  "batchnorm_eval_is_deterministic": true,
+  "batchnorm_eval_preserves_running_mean": true,
+  "passed": true
+}

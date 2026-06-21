@@ -1,0 +1,56 @@
+{
+  "suite": "model_comparison",
+  "selected_run_id": "mlp",
+  "selection_metric": "validation_accuracy",
+  "test_evaluated_after_selection": true,
+  "runs": [
+    {
+      "run_id": "mlp",
+      "model": "mlp",
+      "batchnorm": false,
+      "dropout_keep_ratio": 1.0,
+      "learning_rate": 0.001,
+      "best_epoch": 40,
+      "train_accuracy_at_selection": 0.9960222752585521,
+      "best_validation_accuracy": 0.9814126394052045,
+      "validation_loss_at_selection": 0.1165859120130208,
+      "test_accuracy": 0.981549815498155,
+      "test_loss": 0.09290256468860271,
+      "selected_by_validation": true,
+      "runtime_seconds": 0.5881881999957841,
+      "parameter_count": 9610
+    },
+    {
+      "run_id": "mlp_batchnorm",
+      "model": "mlp",
+      "batchnorm": true,
+      "dropout_keep_ratio": 1.0,
+      "learning_rate": 0.001,
+      "best_epoch": 37,
+      "train_accuracy_at_selection": 1.0,
+      "best_validation_accuracy": 0.9814126394052045,
+      "validation_loss_at_selection": 0.08686403034159969,
+      "test_accuracy": "",
+      "test_loss": "",
+      "selected_by_validation": false,
+      "runtime_seconds": 0.7487016999948537,
+      "parameter_count": 9866
+    },
+    {
+      "run_id": "cnn",
+      "model": "cnn",
+      "batchnorm": false,
+      "dropout_keep_ratio": 1.0,
+      "learning_rate": 0.001,
+      "best_epoch": 39,
+      "train_accuracy_at_selection": 0.9960222752585521,
+      "best_validation_accuracy": 0.9776951672862454,
+      "validation_loss_at_selection": 0.10011034841426493,
+      "test_accuracy": "",
+      "test_loss": "",
+      "selected_by_validation": false,
+      "runtime_seconds": 2.6156328999932157,
+      "parameter_count": 8986
+    }
+  ]
+}

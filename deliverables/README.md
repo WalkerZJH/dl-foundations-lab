@@ -9,6 +9,8 @@
 | 第 1 周 | 2026.05.18 - 2026.05.24 | CS231n Assignment 1：基础分类器与全连接网络 | 已完成第一轮实现、实验和报告整理 | `week01_assignment1/` |
 | 第 2 周 | 2026.05.25 - 2026.05.30 | CS231n Assignment 2：归一化、卷积网络与 RNN 前向路径 | 已完成第一轮实现、实验和报告整理 | `week02_assignment2/` |
 | 第 3 周 | 2026.06.02 - 2026.06.08 | Assignment 1 Dropout 异常更正与报告修订 | 期末备考周，不单独设成果目录 | 本时间线记录 |
+| 第 4 周 | 2026.06.08 - 2026.06.14 | 期末复习与考试准备 | 未形成独立 deliverable | 本时间线记录 |
+| 第 5 周 | 2026.06.15 - 2026.06.21 | Task1：NumPy 神经网络框架 | 已完成第一轮实现、实验和报告整理 | `week05_task1/` |
 
 ## 第 1 周：CS231n Assignment 1
 
@@ -28,7 +30,7 @@
 ### 当前成果
 
 * 周报：`week01_assignment1/week01_report.md`
-* 报告 PDF：`week01_assignment1/pdf/week01_assignment1_report.pdf`
+* 报告 PDF：`week01_assignment1/latex/week01_assignment1_report.pdf`
 * 代码入口说明：`../units/assignment1/code/README.md`
 * 实验脚本：`../units/assignment1/code/run_assignment1_experiments.py`
 * 探索脚本：`../units/assignment1/code/run_assignment1_explorations.py`
@@ -77,7 +79,7 @@
 
 ### 当前成果
 
-* 报告 PDF：`week02_assignment2/pdf/week2_assignment2_report.pdf`
+* 报告 PDF：`week02_assignment2/latex/week2_assignment2_report.pdf`
 * 代码入口说明：`../units/assignment2/code/README.md`
 * 实验脚本：`../units/assignment2/code/run_assignment2_experiments.py`
 * 实验结果：`../units/assignment2/results/`
@@ -108,3 +110,37 @@
 * 修订第 1 周 LaTeX 报告，移除发散型 baseline/optimizer loss 图，改用文字说明，并纳入修正后的 Dropout 消融图。
 
 该周工作属于已有 Assignment 1 成果的质量修订，相关代码、结果和报告仍归入 `../units/assignment1/` 与 `week01_assignment1/`。
+
+## 第 4 周：期末复习与考试准备
+
+时间范围：2026.06.08 - 2026.06.14
+
+本周主要进行期末复习与考试准备，没有形成独立 deliverable。
+
+## 第 5 周：Task1 NumPy 神经网络框架
+
+时间范围：2026.06.15 - 2026.06.21
+
+本阶段将后续任务切换为独立 task 工作流。Task1 不复制 Assignment 代码，使用 NumPy 实现模块、前向传播、反向传播、优化器和训练器，并在完整 Digits 与 CIFAR-10 数据集上完成正式实验。
+
+### 主要任务
+
+* 实现 Linear、ReLU、BatchNorm、Dropout、naive/vectorized Conv2D、MaxPool2D 与 Softmax Cross Entropy。
+* 实现 SGD、Momentum、Adam、显式 train/eval 模式和可恢复的逐 epoch checkpoint。
+* 完成 shape、数值梯度、模式切换、卷积一致性和效率验证。
+* 完成 MLP baseline、MLP/MLP+BN/CNN 对比、学习率搜索和 BatchNorm/Dropout 消融。
+* 依据 validation accuracy 选择配置，test set 仅用于选择完成后的观察。
+
+### 当前成果
+
+* 成果目录：`week05_task1/`
+* 周报：`week05_task1/week05_report.md`
+* 方法补充：`week05_task1/task1_method_supplement.md`
+* 报告 PDF：`week05_task1/latex/week05_task1_report.pdf`
+* 单元入口：`../units/task1_numpy_nn_framework/README.md`
+* 正式实验入口：`../units/task1_numpy_nn_framework/code/run_task1_experiments.py`
+* 统一结果分析：`../units/task1_numpy_nn_framework/results/final_analysis.md`
+
+### 实验概况
+
+Digits 共 1797 张 $8\times8$ 图像，分层划分为训练 1257、验证 269、测试 271。MLP baseline validation accuracy 为 0.9814，选择后的 test accuracy 为 0.9815；学习率 0.003 的 validation accuracy 为 0.9851。完整 CIFAR-10 对照使用 45000/5000/10000 划分，模型对比中 CNN validation/test accuracy 为 0.6250/0.6089。naive/vectorized 卷积前后向结果一致，固定 forward benchmark 中向量化实现约快 300 倍。

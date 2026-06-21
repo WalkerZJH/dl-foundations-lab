@@ -1,0 +1,4 @@
+﻿run_id,model,batchnorm,dropout_keep_ratio,learning_rate,best_epoch,train_accuracy_at_selection,best_validation_accuracy,validation_loss_at_selection,test_accuracy,test_loss,selected_by_validation,runtime_seconds,parameter_count
+mlp,mlp,False,1.0,0.001,25,0.48804444444444445,0.4648,1.5627665311813355,,,False,4663.978001099997,394634
+mlp_batchnorm,mlp,True,1.0,0.001,14,0.6277555555555555,0.506,1.4300842880249023,,,False,619.2977890000038,394890
+cnn,cnn,False,1.0,0.001,22,0.7402888888888889,0.625,1.130620764541626,0.6089,1.144900211906433,True,5940.004595799997,132010

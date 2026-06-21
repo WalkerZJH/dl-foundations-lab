@@ -1,0 +1,24 @@
+[
+  {
+    "seed": 42,
+    "dataset": {
+      "name": "sklearn_digits",
+      "train_ratio": 0.7,
+      "validation_ratio": 0.15
+    },
+    "model": {
+      "name": "mlp",
+      "hidden_dim": 128,
+      "batchnorm": false,
+      "dropout_keep_ratio": 1.0
+    },
+    "training": {
+      "epochs": 40,
+      "batch_size": 64,
+      "optimizer": "adam",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001
+    },
+    "run_id": "baseline_mlp"
+  }
+]

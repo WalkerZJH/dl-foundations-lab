@@ -1,0 +1,9 @@
+{
+  "selected_run_id": "cnn",
+  "selection_metric": "validation_accuracy",
+  "best_validation_accuracy": 0.625,
+  "test_metrics": {
+    "loss": 1.144900211906433,
+    "accuracy": 0.6089
+  }
+}

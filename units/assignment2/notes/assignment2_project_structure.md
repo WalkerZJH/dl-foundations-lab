@@ -56,5 +56,5 @@
 Assignment 2 的阶段性报告位于 `../../../deliverables/week02_assignment2/`：
 
 - `../../../deliverables/week02_assignment2/latex/week2_assignment2_report.tex`
-- `../../../deliverables/week02_assignment2/pdf/week2_assignment2_report.pdf`
+- `../../../deliverables/week02_assignment2/latex/week2_assignment2_report.pdf`
 - `../../../deliverables/week02_assignment2/assignment2_method_supplement.md`

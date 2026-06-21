@@ -20,4 +20,4 @@
 
 当前实验使用 CIFAR-10 完整训练设置，训练集 49000 张、验证集 1000 张、测试集 10000 张。kNN 使用完整训练集，并通过 chunked 距离计算保留运行痕迹。
 
-baseline 结果保存在 `units/assignment1/results/baseline/`；探索实验结果保存在 `units/assignment1/results/hparam_tuning/` 和 `units/assignment1/results/ablation/`。本轮探索中，SVM 搜索取得 test acc 0.3760，TwoLayerNet 学习率搜索取得 test acc 0.4802，优化器消融中的 SGD 取得 test acc 0.4855；归一化/Dropout 消融已在修正固定 dropout seed 后重跑，正式结果保存在 `units/assignment1/results/ablation/normalization_dropout_ablation_20260608_115235/`。报告 PDF 保存在 `deliverables/week01_assignment1/pdf/week01_assignment1_report.pdf`。
+baseline 结果保存在 `units/assignment1/results/baseline/`；探索实验结果保存在 `units/assignment1/results/hparam_tuning/` 和 `units/assignment1/results/ablation/`。本轮探索中，SVM 搜索取得 test acc 0.3760，TwoLayerNet 学习率搜索取得 test acc 0.4802，优化器消融中的 SGD 取得 test acc 0.4855；归一化/Dropout 消融已在修正固定 dropout seed 后重跑，正式结果保存在 `units/assignment1/results/ablation/normalization_dropout_ablation_20260608_115235/`。报告 PDF 保存在 `deliverables/week01_assignment1/latex/week01_assignment1_report.pdf`。

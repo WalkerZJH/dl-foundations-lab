@@ -1,0 +1,70 @@
+{
+  "source": "CIFAR-10 python batches (50000 train/validation, 10000 test)",
+  "total_samples": 60000,
+  "train": {
+    "samples": 45000,
+    "class_counts": [
+      4500,
+      4500,
+      4500,
+      4500,
+      4500,
+      4500,
+      4500,
+      4500,
+      4500,
+      4500
+    ],
+    "image_shape": [
+      3,
+      32,
+      32
+    ],
+    "value_min": 0.0,
+    "value_max": 1.0
+  },
+  "validation": {
+    "samples": 5000,
+    "class_counts": [
+      500,
+      500,
+      500,
+      500,
+      500,
+      500,
+      500,
+      500,
+      500,
+      500
+    ],
+    "image_shape": [
+      3,
+      32,
+      32
+    ],
+    "value_min": 0.0,
+    "value_max": 1.0
+  },
+  "test": {
+    "samples": 10000,
+    "class_counts": [
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000,
+      1000
+    ],
+    "image_shape": [
+      3,
+      32,
+      32
+    ],
+    "value_min": 0.0,
+    "value_max": 1.0
+  }
+}

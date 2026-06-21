@@ -23,4 +23,4 @@
 | CNN 容量搜索 | filters=16, hidden=100, reg=1e-3 | 0.7791 | 0.6440 | 0.6350 |
 | FC 消融 | 无归一化、无 Dropout | 0.4429 | 0.4420 | 0.4394 |
 
-完整报告 PDF 位于 `pdf/week2_assignment2_report.pdf`。
+完整报告 PDF 位于 `latex/week2_assignment2_report.pdf`。

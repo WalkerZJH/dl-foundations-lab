@@ -1,0 +1,9 @@
+{
+  "selected_run_id": "with_batchnorm",
+  "selection_metric": "validation_accuracy",
+  "best_validation_accuracy": 0.506,
+  "test_metrics": {
+    "loss": 1.4237650632858276,
+    "accuracy": 0.5085
+  }
+}

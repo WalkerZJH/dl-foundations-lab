@@ -1,0 +1,83 @@
+{
+  "model_comparison": [
+    {
+      "run_id": "mlp",
+      "model": {
+        "name": "mlp",
+        "hidden_dim": 128,
+        "batchnorm": false,
+        "dropout_keep_ratio": 1.0
+      }
+    },
+    {
+      "run_id": "mlp_batchnorm",
+      "model": {
+        "name": "mlp",
+        "hidden_dim": 128,
+        "batchnorm": true,
+        "batchnorm_momentum": 0.9,
+        "dropout_keep_ratio": 1.0
+      }
+    },
+    {
+      "run_id": "cnn",
+      "model": {
+        "name": "cnn",
+        "num_filters": 8,
+        "hidden_dim": 64,
+        "batchnorm": false,
+        "dropout_keep_ratio": 1.0
+      }
+    }
+  ],
+  "learning_rate_search": [
+    {
+      "run_id": "lr_0p0005",
+      "training": {
+        "learning_rate": 0.0005
+      }
+    },
+    {
+      "run_id": "lr_0p001",
+      "training": {
+        "learning_rate": 0.001
+      }
+    },
+    {
+      "run_id": "lr_0p003",
+      "training": {
+        "learning_rate": 0.003
+      }
+    }
+  ],
+  "normalization_dropout_ablation": [
+    {
+      "run_id": "plain_mlp",
+      "model": {
+        "name": "mlp",
+        "hidden_dim": 128,
+        "batchnorm": false,
+        "dropout_keep_ratio": 1.0
+      }
+    },
+    {
+      "run_id": "with_batchnorm",
+      "model": {
+        "name": "mlp",
+        "hidden_dim": 128,
+        "batchnorm": true,
+        "batchnorm_momentum": 0.9,
+        "dropout_keep_ratio": 1.0
+      }
+    },
+    {
+      "run_id": "with_dropout",
+      "model": {
+        "name": "mlp",
+        "hidden_dim": 128,
+        "batchnorm": false,
+        "dropout_keep_ratio": 0.8
+      }
+    }
+  ]
+}

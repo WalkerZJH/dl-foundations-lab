@@ -1,0 +1,6 @@
+{
+  "best_epoch": 25,
+  "best_validation_accuracy": 0.4648,
+  "runtime_seconds": 4663.978001099997,
+  "selection_metric": "validation_accuracy"
+}

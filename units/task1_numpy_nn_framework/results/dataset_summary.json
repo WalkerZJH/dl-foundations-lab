@@ -1,0 +1,70 @@
+{
+  "source": "scikit-learn load_digits (1797 samples, 8x8 grayscale)",
+  "total_samples": 1797,
+  "train": {
+    "samples": 1257,
+    "class_counts": [
+      124,
+      127,
+      124,
+      128,
+      127,
+      127,
+      127,
+      125,
+      122,
+      126
+    ],
+    "image_shape": [
+      1,
+      8,
+      8
+    ],
+    "value_min": 0.0,
+    "value_max": 1.0
+  },
+  "validation": {
+    "samples": 269,
+    "class_counts": [
+      27,
+      27,
+      27,
+      27,
+      27,
+      27,
+      27,
+      27,
+      26,
+      27
+    ],
+    "image_shape": [
+      1,
+      8,
+      8
+    ],
+    "value_min": 0.0,
+    "value_max": 1.0
+  },
+  "test": {
+    "samples": 271,
+    "class_counts": [
+      27,
+      28,
+      26,
+      28,
+      27,
+      28,
+      27,
+      27,
+      26,
+      27
+    ],
+    "image_shape": [
+      1,
+      8,
+      8
+    ],
+    "value_min": 0.0,
+    "value_max": 1.0
+  }
+}
