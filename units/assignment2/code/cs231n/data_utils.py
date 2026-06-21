@@ -5,6 +5,10 @@ from six.moves import cPickle as pickle
 import numpy as np
 import os
 import platform
+from pathlib import Path
+
+
+DATA_ROOT = Path(__file__).resolve().parents[3] / "data"
 
 
 def load_pickle(f):
@@ -52,9 +56,7 @@ def get_CIFAR10_data(
     condensed to a single function.
     """
     # Load the raw CIFAR-10 data
-    cifar10_dir = os.path.join(
-        os.path.dirname(__file__), "datasets/cifar-10-batches-py"
-    )
+    cifar10_dir = str(DATA_ROOT / "cifar-10-batches-py")
     X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)
 
     # Subsample the data
@@ -252,13 +254,11 @@ def load_imagenet_val(num=None):
     - y: numpy array of integer image labels, shape [num]
     - class_names: dict mapping integer label to class name
     """
-    imagenet_fn = os.path.join(
-        os.path.dirname(__file__), "datasets/imagenet_val_25.npz"
-    )
+    imagenet_fn = str(DATA_ROOT / "imagenet_val_25.npz")
     if not os.path.isfile(imagenet_fn):
         print("file %s not found" % imagenet_fn)
         print("Run the following:")
-        print("cd cs231n/datasets")
+        print("cd units/data")
         print("bash get_imagenet_val.sh")
         assert False, "Need to download imagenet_val_25.npz"
 

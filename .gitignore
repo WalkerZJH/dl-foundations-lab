@@ -40,17 +40,12 @@ raw_data/
 processed_data/
 external_data/
 
-# Assignment 1 keeps the dataset download script, but not downloaded data.
-!units/assignment1/code/cs231n/datasets/
-units/assignment1/code/cs231n/datasets/*
-!units/assignment1/code/cs231n/datasets/get_datasets.sh
-
-# Assignment 2 keeps dataset download scripts, but not downloaded data.
-!units/assignment2/code/cs231n/datasets/
-units/assignment2/code/cs231n/datasets/*
-!units/assignment2/code/cs231n/datasets/get_datasets.sh
-!units/assignment2/code/cs231n/datasets/get_coco_dataset.sh
-!units/assignment2/code/cs231n/datasets/get_imagenet_val.sh
+# Shared local datasets for every assignment and task.
+units/data/*
+!units/data/README.md
+!units/data/get_datasets.sh
+!units/data/get_coco_dataset.sh
+!units/data/get_imagenet_val.sh
 
 *.npy
 *.npz
@@ -76,6 +71,10 @@ units/assignment2/code/cs231n/datasets/*
 # =========================
 checkpoints/*
 !checkpoints/README.md
+
+# Shared resumable training state for every assignment and task.
+units/checkpoints/*
+!units/checkpoints/README.md
 
 *.pt
 *.pth

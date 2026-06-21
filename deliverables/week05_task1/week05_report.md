@@ -10,7 +10,7 @@
 * 完成 shape、数值梯度、train/eval 模式、naive/vectorized 卷积一致性与效率检查。
 * 完成 MLP baseline、MLP/MLP+BN/CNN 对比、学习率搜索和 BatchNorm/Dropout 消融。
 * 追加完整 CIFAR-10 对照，使用 45000/5000/10000 划分复用相同实验矩阵。
-* 为正式训练加入逐 epoch CSV trace、随机状态和本地 checkpoint，支持相同配置中断恢复。
+* 为正式训练加入逐 epoch CSV trace，并将随机状态和本地 checkpoint 独立保存到 `units/checkpoints/`，支持相同配置中断恢复。
 
 ## 主要结果
 

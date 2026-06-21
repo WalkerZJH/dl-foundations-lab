@@ -16,6 +16,7 @@ from training import evaluate, train_model
 TASK_ROOT = Path(__file__).resolve().parents[1]
 CONFIG_ROOT = TASK_ROOT / "configs"
 RESULT_ROOT = TASK_ROOT / "results"
+CHECKPOINT_ROOT = TASK_ROOT.parent / "checkpoints" / TASK_ROOT.name
 SUITE_TO_DIRECTORY = {
     "baseline": "baseline",
     "model_comparison": "model_comparison",
@@ -81,8 +82,11 @@ def execute_suite(name: str, dataset: str = "digits", force: bool = False) -> di
     for config in configs:
         run_id = str(config["run_id"])
         run_dir = output_dir / run_id
+        checkpoint_dir = CHECKPOINT_ROOT / dataset / SUITE_TO_DIRECTORY[name] / run_id
         if force and run_dir.exists():
             shutil.rmtree(run_dir)
+        if force and checkpoint_dir.exists():
+            shutil.rmtree(checkpoint_dir)
         ensure_directory(run_dir)
         write_json(run_dir / "config.json", config)
         model_seed = int(config["seed"])
@@ -99,6 +103,7 @@ def execute_suite(name: str, dataset: str = "digits", force: bool = False) -> di
             data.validation,
             config,
             run_dir,
+            checkpoint_dir / "training_checkpoint.pkl",
             seed=model_seed + 1,
             resume=not force,
         )
@@ -144,6 +149,11 @@ def execute_suite(name: str, dataset: str = "digits", force: bool = False) -> di
         data.validation,
         selected_config,
         output_dir / str(selected["run_id"]),
+        CHECKPOINT_ROOT
+        / dataset
+        / SUITE_TO_DIRECTORY[name]
+        / str(selected["run_id"])
+        / "training_checkpoint.pkl",
         seed=selected_seed + 1,
         resume=True,
     )

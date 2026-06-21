@@ -31,4 +31,4 @@ CIFAR-10 对照使用完整 60000 张图像，划分为训练 45000、验证 500
 & 'D:\anaconda\envs\minimind\python.exe' units/task1_numpy_nn_framework/code/run_task1_experiments.py --dataset cifar10 --suite all
 ```
 
-正式训练按 epoch 保存 CSV trace 和本地 checkpoint。checkpoint 使用 `.pkl`，由仓库 `.gitignore` 排除；重复运行会从相同配置的断点恢复。
+正式训练按 epoch 保存 CSV trace，并把本地 checkpoint 写入 `units/checkpoints/task1_numpy_nn_framework/<dataset>/<suite>/<run>/`。checkpoint 与正式结果分离且由 `.gitignore` 排除；重复运行会从相同配置的断点恢复。

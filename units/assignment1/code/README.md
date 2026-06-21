@@ -6,7 +6,7 @@
 
 - `cs231n/`：核心代码包；
 - `cs231n/classifiers/`：kNN、Softmax、SVM、TwoLayerNet、FullyConnectedNet 等分类器；
-- `cs231n/datasets/get_datasets.sh`：课程数据下载脚本；
+- `../../data/get_datasets.sh`：共享数据下载脚本；
 - `run_assignment1_experiments.py`：阶段性 baseline 复现实验入口；
 - `run_assignment1_explorations.py`：超参数探索、消融实验和诊断实验入口。
 - `../experiments/assignment1_exploration_suites.json`：探索实验 suite 配置。

@@ -78,11 +78,12 @@ def train_model(
     validation_split: DatasetSplit,
     config: dict[str, Any],
     output_dir: Path,
+    checkpoint_path: Path,
     seed: int,
     resume: bool = True,
 ) -> TrainingResult:
     ensure_directory(output_dir)
-    checkpoint_path = output_dir / "training_checkpoint.pkl"
+    ensure_directory(checkpoint_path.parent)
     history_path = output_dir / "epoch_metrics.csv"
     trace_path = output_dir / "run_trace.txt"
     digest = _config_digest(config)

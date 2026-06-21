@@ -22,13 +22,13 @@
 
 ## 数据位置
 
-课程脚本的数据下载位置为 `../code/cs231n/datasets/`：
+Assignment 2 与其他单元统一使用仓库级 `units/data/`：
 
-- `../code/cs231n/datasets/cifar-10-batches-py/`
-- `../code/cs231n/datasets/imagenet_val_25.npz`
-- `../code/cs231n/datasets/coco_captioning/`
+- `units/data/cifar-10-batches-py/`
+- `units/data/imagenet_val_25.npz`
+- `units/data/coco_captioning/`
 
-这些原始数据目录和文件由 `.gitignore` 排除。仓库只保留下载脚本，不保留数据本体和压缩包。
+这些原始数据目录和文件由 `.gitignore` 排除。下载脚本集中保存在 `units/data/`，避免不同 assignment 重复维护数据副本。
 
 ## 实验结果
 

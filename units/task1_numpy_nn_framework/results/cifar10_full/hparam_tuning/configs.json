@@ -3,7 +3,7 @@
     "seed": 42,
     "dataset": {
       "name": "cifar10",
-      "path": "units/assignment1/code/cs231n/datasets/cifar-10-batches-py",
+      "path": "units/data/cifar-10-batches-py",
       "validation_ratio": 0.1
     },
     "model": {
@@ -32,7 +32,7 @@
     "seed": 42,
     "dataset": {
       "name": "cifar10",
-      "path": "units/assignment1/code/cs231n/datasets/cifar-10-batches-py",
+      "path": "units/data/cifar-10-batches-py",
       "validation_ratio": 0.1
     },
     "model": {
@@ -61,7 +61,7 @@
     "seed": 42,
     "dataset": {
       "name": "cifar10",
-      "path": "units/assignment1/code/cs231n/datasets/cifar-10-batches-py",
+      "path": "units/data/cifar-10-batches-py",
       "validation_ratio": 0.1
     },
     "model": {

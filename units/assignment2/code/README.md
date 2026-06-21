@@ -35,4 +35,4 @@ D:\anaconda\envs\minimind\python.exe units\assignment2\code\run_assignment2_expl
 - `fc_normalization_dropout_ablation`：FullyConnectedNet 归一化与 Dropout 消融；
 - `conv_regularization_ablation`：ThreeLayerConvNet L2 正则消融。
 
-数据下载脚本保留在 `cs231n/datasets/`。下载后的 CIFAR-10、COCO、ImageNet 样例等原始数据不提交。
+数据下载脚本与本地数据统一放在 `units/data/`。Assignment 2 从该共享目录读取 CIFAR-10、COCO 和 ImageNet 样例；原始数据不提交。

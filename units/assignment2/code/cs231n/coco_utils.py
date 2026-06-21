@@ -1,9 +1,9 @@
 import os, json
+from pathlib import Path
 import numpy as np
 import h5py
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-BASE_DIR = os.path.join(dir_path, "datasets/coco_captioning")
+BASE_DIR = str(Path(__file__).resolve().parents[3] / "data" / "coco_captioning")
 
 def load_coco_data(base_dir=BASE_DIR, max_train=None, pca_features=True):
     print('base dir ', base_dir)

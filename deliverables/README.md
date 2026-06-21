@@ -126,7 +126,7 @@
 ### 主要任务
 
 * 实现 Linear、ReLU、BatchNorm、Dropout、naive/vectorized Conv2D、MaxPool2D 与 Softmax Cross Entropy。
-* 实现 SGD、Momentum、Adam、显式 train/eval 模式和可恢复的逐 epoch checkpoint。
+* 实现 SGD、Momentum、Adam、显式 train/eval 模式和可恢复的逐 epoch checkpoint；断点统一保存到 `units/checkpoints/`，不混入结果目录。
 * 完成 shape、数值梯度、模式切换、卷积一致性和效率验证。
 * 完成 MLP baseline、MLP/MLP+BN/CNN 对比、学习率搜索和 BatchNorm/Dropout 消融。
 * 依据 validation accuracy 选择配置，test set 仅用于选择完成后的观察。

@@ -4,7 +4,7 @@
 
 ## 当前仓库结构
 
-* `units/`：按任务单元组织代码、笔记和实验结果。
+* `units/`：按任务单元组织代码、笔记和实验结果；共享数据与训练断点分别放在 `units/data/` 和 `units/checkpoints/`。
 * `deliverables/`：阶段性成果归档，按周组织报告、学习笔记、LaTeX 源文件和 PDF。
 
 公开查看阶段性成果时，建议优先查看 `deliverables/`；复现实验或检查实现细节时，建议查看 `units/`。
@@ -87,7 +87,7 @@ Assignment 1 当前已补充 full-data 探索实验结构，包含 kNN 的 `k` �
 
 复现 baseline 时以 `run_assignment1_experiments.py` 为入口；运行超参数搜索和消融实验时以 `run_assignment1_explorations.py` 为入口。
 
-Assignment 1 数据按课程脚本下载到 `units/assignment1/code/cs231n/datasets/`。该目录中的数据文件不提交到 GitHub，只保留 `get_datasets.sh`。
+Assignment 1 数据通过 `units/data/get_datasets.sh` 下载到共享目录 `units/data/`。原始数据不提交到 GitHub。
 
 ### Assignment 2
 
@@ -103,7 +103,7 @@ Assignment 1 数据按课程脚本下载到 `units/assignment1/code/cs231n/datas
 
 复现实验时以 `run_assignment2_experiments.py` 为统一入口，探索实验以 `run_assignment2_explorations.py` 为入口，当前 PyTorch 相关路径使用 conda `minimind` 环境运行。当前正式结果使用 CIFAR-10 完整训练设置；ThreeLayerConvNet baseline test acc 为 0.6151，容量搜索最佳 test acc 为 0.6350。
 
-Assignment 2 数据按课程脚本下载到 `units/assignment2/code/cs231n/datasets/`。该目录中的数据文件不提交到 GitHub，只保留下载脚本。
+Assignment 2 与其他 task 统一从 `units/data/` 读取数据，下载脚本也集中保存在该目录。原始数据不提交到 GitHub。
 
 ### Task1 NumPy 神经网络框架
 
