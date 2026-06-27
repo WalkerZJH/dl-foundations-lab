@@ -1,0 +1,92 @@
+runs:
+  - run_id: ag_textcnn_baseline_20ep
+    model: textcnn
+    dropout: 0.5
+    max_seq_len: 128
+    epochs: 20
+  - run_id: ag_textcnn_d02_20ep
+    model: textcnn
+    dropout: 0.2
+    max_seq_len: 128
+    epochs: 20
+  - run_id: ag_textcnn_d02_len256_20ep
+    model: textcnn
+    dropout: 0.2
+    max_seq_len: 256
+    epochs: 20
+  - run_id: ag_bilstm_20ep
+    model: bilstm
+    dropout: 0.5
+    max_seq_len: 128
+    hidden_dim: 128
+    epochs: 20
+    gradient_clip_norm: 5.0
+  - run_id: ag_textcnn_adamw_cosine
+    model: textcnn
+    dropout: 0.2
+    max_seq_len: 128
+    optimizer: adamw
+    scheduler: cosine_with_warmup
+    warmup_ratio: 0.1
+    epochs: 20
+  - run_id: ag_textcnn_wide
+    model: textcnn
+    vocab_size: 50000
+    max_seq_len: 256
+    embedding_dim: 128
+    num_filters: 256
+    kernel_sizes: [2, 3, 4, 5]
+    dropout: 0.3
+    optimizer: adamw
+    scheduler: cosine_with_warmup
+    warmup_ratio: 0.1
+    epochs: 20
+  - run_id: ag_textcnn_label_smoothing
+    model: textcnn
+    dropout: 0.2
+    label_smoothing: 0.05
+    optimizer: adamw
+    scheduler: cosine_with_warmup
+    warmup_ratio: 0.1
+    epochs: 20
+  - run_id: ag_fasttext_bigram
+    model: fasttext
+    embedding_dim: 200
+    hidden_dim: 256
+    dropout: 0.2
+    optimizer: adamw
+    epochs: 20
+  - run_id: ag_bilstm_attention
+    model: bilstm_attention
+    embedding_dim: 128
+    hidden_dim: 128
+    max_seq_len: 256
+    dropout: 0.3
+    optimizer: adamw
+    gradient_clip_norm: 5.0
+    epochs: 20
+  - run_id: ag_rcnn
+    model: rcnn
+    embedding_dim: 128
+    hidden_dim: 128
+    max_seq_len: 256
+    dropout: 0.3
+    optimizer: adamw
+    gradient_clip_norm: 5.0
+    epochs: 20
+  - run_id: ag_transformer_encoder_small
+    model: transformer_encoder
+    vocab_size: 50000
+    embedding_dim: 128
+    max_seq_len: 256
+    num_layers: 2
+    num_heads: 4
+    ffn_dim: 512
+    dropout: 0.1
+    optimizer: adamw
+    learning_rate: 0.0005
+    weight_decay: 0.01
+    scheduler: cosine_with_warmup
+    warmup_ratio: 0.1
+    label_smoothing: 0.05
+    epochs: 20

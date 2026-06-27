@@ -69,7 +69,7 @@ Assignment 1 当前已补充 full-data 探索实验结构，包含 kNN 的 `k` �
 * Assignment 1：已完成第一轮实现、实验和报告整理
 * Assignment 2：已完成第一轮实现、实验和报告整理
 * Task1 NumPy 神经网络框架：已完成第一轮实现、实验和报告整理
-* Task2 NLP baseline：待开始
+* Task2 AG-News 文本分类：已完成二阶段强化实验、结果归档和报告重构
 
 ## 面向索引的目录说明
 
@@ -130,5 +130,24 @@ Task1 使用完整 Digits 与 CIFAR-10 数据集。scikit-learn 仅负责读取�
 * 第 5 周报告 LaTeX：`deliverables/week05_task1/latex/week05_task1_report.tex`
 * 第 5 周报告 PDF：`deliverables/week05_task1/latex/week05_task1_report.pdf`
 * 第 5 周周报：`deliverables/week05_task1/week05_report.md`
+
+* 第 6 周成果目录：`deliverables/week06_task2/`
+* 第 6 周周报：`deliverables/week06_task2/week06_report.md`
+* 第 6 周报告 LaTeX：`deliverables/week06_task2/latex/week06_task2_classification_report.tex`
+* 第 6 周报告 PDF：`deliverables/week06_task2/latex/week06_task2_classification_report.pdf`
+
+### Task2 分类实验
+
+* 单元入口：`units/task2_classification/README.md`
+* 数据下载脚本：`units/data/download_ag_news.py`
+* 正式实验入口：`units/task2_classification/code/run_task2_experiments.py`
+* 二阶段 AG-News 入口：`units/task2_classification/code/stage2_ag_news.py`
+* 二阶段 DistilBERT 入口：`units/task2_classification/code/stage2_distilbert.py`
+* 汇总分析：`units/task2_classification/results/final_analysis.md`
+* 一阶段汇总表：`units/task2_classification/results/summary_all_runs.csv`
+* 二阶段汇总表：`units/task2_classification/results/task2_stage2_all_summary.csv`
+* 阶段交付：`deliverables/week06_task2/`
+
+Task2 固定选择 AG-News。当前已完成 TextCNN baseline、受控超参数搜索、MLP/LSTM/BiLSTM 对比、TextCNN 关键模块消融、20-epoch 强化实验、scratch 结构补充、DistilBERT fine-tuning、概率平均 ensemble 和错误分析。配置选择统一依据 validation set，test set 只用于最终观察。二阶段最优 validation 配置为 `ag_distilbert_finetune`，validation accuracy 为 0.9483，最终 test observation accuracy 为 0.9466；轻量 scratch 最优为 `ag_textcnn_label_smoothing`，test accuracy 为 0.9186；`ag_ensemble_top3` test accuracy 为 0.9392，作为模型互补性验证保留。
 
 阶段性总结、报告和可公开查看的 PDF 优先放入 `deliverables/`，过程代码和实验资产保留在 `units/`。

@@ -1,0 +1,15 @@
+{
+  "splits": {
+    "train": 108000,
+    "val": 12000,
+    "test": 7600
+  },
+  "labels": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "non_empty_text": true,
+  "passed": true
+}

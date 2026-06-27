@@ -11,6 +11,7 @@
 | 第 3 周 | 2026.06.02 - 2026.06.08 | Assignment 1 Dropout 异常更正与报告修订 | 期末备考周，不单独设成果目录 | 本时间线记录 |
 | 第 4 周 | 2026.06.08 - 2026.06.14 | 期末复习与考试准备 | 未形成独立 deliverable | 本时间线记录 |
 | 第 5 周 | 2026.06.15 - 2026.06.21 | Task1：NumPy 神经网络框架 | 已完成第一轮实现、实验和报告整理 | `week05_task1/` |
+| 第 6 周 | 2026.06.22 - 2026.06.28 | Task2：AG-News 文本分类 | 已完成二阶段强化实验、结果归档和报告重构 | `week06_task2/` |
 
 ## 第 1 周：CS231n Assignment 1
 
@@ -144,3 +145,30 @@
 ### 实验概况
 
 Digits 共 1797 张 $8\times8$ 图像，分层划分为训练 1257、验证 269、测试 271。MLP baseline validation accuracy 为 0.9814，选择后的 test accuracy 为 0.9815；学习率 0.003 的 validation accuracy 为 0.9851。完整 CIFAR-10 对照使用 45000/5000/10000 划分，模型对比中 CNN validation/test accuracy 为 0.6250/0.6089。naive/vectorized 卷积前后向结果一致，固定 forward benchmark 中向量化实现约快 300 倍。
+
+## 第 6 周：Task2 AG-News 文本分类
+
+时间范围：2026.06.22 - 2026.06.28
+
+本阶段围绕 `../units/task2_classification/` 展开，完成 AG-News 文本分类的可复现实验闭环，并按二阶段要求补充强化训练、预训练模型、ensemble 和错误分析。配置选择均基于 validation set，test set 仅作为最终观察。
+
+### 主要任务
+
+* 完成 AG-News 数据导出、词表构建、TextCNN baseline、受控超参数搜索、模型对比和关键模块消融。
+* 补充 AG-News 20-epoch 强化实验、TextCNN label smoothing、FastText-style pooling、BiLSTM-Attention、RCNN、small Transformer encoder 与 DistilBERT fine-tuning。
+* 对 AG-News 最优验证配置进行错误分析，并补充概率平均 ensemble 作为模型组合观察。
+* 重构 week06 周报、方法补充和 LaTeX 报告，保留轻量 CSV、summary、figures 和 PDF，不提交原始数据、checkpoint、缓存或 LaTeX 中间文件。
+
+### 当前成果
+
+* 成果目录：`week06_task2/`
+* 周报：`week06_task2/week06_report.md`
+* 方法补充：`week06_task2/task2_method_supplement.md`
+* 报告 PDF：`week06_task2/latex/week06_task2_classification_report.pdf`
+* 单元入口：`../units/task2_classification/README.md`
+* 二阶段汇总表：`../units/task2_classification/results/task2_stage2_all_summary.csv`
+* 汇总分析：`../units/task2_classification/results/final_analysis.md`
+
+### 实验概况
+
+AG-News 一阶段 validation 最优为 `hparam_dropout_0.2`，validation accuracy 为 0.9228，test accuracy 为 0.9167。二阶段最优验证配置为 `ag_distilbert_finetune`，validation accuracy 为 0.9483，test accuracy 为 0.9466；轻量 scratch 模型中 `ag_textcnn_label_smoothing` test accuracy 为 0.9186。AG-News top-3 概率平均 ensemble test accuracy 为 0.9392，低于单个 DistilBERT，但已超过 92% 参考线，作为模型互补性验证保留。

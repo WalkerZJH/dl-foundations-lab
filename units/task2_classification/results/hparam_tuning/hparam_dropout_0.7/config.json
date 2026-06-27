@@ -1,0 +1,34 @@
+{
+  "run_id": "hparam_dropout_0.7",
+  "dataset": "ag_news",
+  "model": "textcnn",
+  "seed": 42,
+  "device": "cuda_if_available",
+  "lowercase": true,
+  "vocab_size": 30000,
+  "min_freq": 2,
+  "max_seq_len": 128,
+  "padding_idx": 0,
+  "embedding_dim": 128,
+  "hidden_dim": 256,
+  "num_filters": 128,
+  "kernel_sizes": [
+    3,
+    4,
+    5
+  ],
+  "num_layers": 1,
+  "dropout": 0.7,
+  "batch_size": 128,
+  "num_workers": 0,
+  "optimizer": "adam",
+  "learning_rate": 0.001,
+  "weight_decay": 0.0001,
+  "scheduler": "none",
+  "epochs": 6,
+  "early_stopping": {
+    "monitor": "val_acc",
+    "patience": 2
+  },
+  "gradient_clip_norm": null
+}

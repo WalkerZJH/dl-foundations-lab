@@ -1,0 +1,50 @@
+{
+  "run_id": "ag_distilbert_finetune",
+  "model": "distilbert-base-uncased",
+  "best_epoch": 3,
+  "best_val_acc": 0.94825,
+  "test_loss": 0.1667958132687368,
+  "test_acc": 0.9465789473684211,
+  "test_macro_f1": 0.9466101474928005,
+  "num_parameters": 66956548,
+  "peak_gpu_memory_mb": 1713,
+  "classification_report": {
+    "0": {
+      "precision": 0.9602332979851538,
+      "recall": 0.9531578947368421,
+      "f1-score": 0.9566825145272055,
+      "support": 1900.0
+    },
+    "1": {
+      "precision": 0.9878755930416447,
+      "recall": 0.9863157894736843,
+      "f1-score": 0.9870950750592573,
+      "support": 1900.0
+    },
+    "2": {
+      "precision": 0.9252136752136753,
+      "recall": 0.911578947368421,
+      "f1-score": 0.9183457051961824,
+      "support": 1900.0
+    },
+    "3": {
+      "precision": 0.913624678663239,
+      "recall": 0.9352631578947368,
+      "f1-score": 0.9243172951885565,
+      "support": 1900.0
+    },
+    "accuracy": 0.9465789473684211,
+    "macro avg": {
+      "precision": 0.9467368112259282,
+      "recall": 0.9465789473684211,
+      "f1-score": 0.9466101474928005,
+      "support": 7600.0
+    },
+    "weighted avg": {
+      "precision": 0.9467368112259282,
+      "recall": 0.9465789473684211,
+      "f1-score": 0.9466101474928005,
+      "support": 7600.0
+    }
+  }
+}

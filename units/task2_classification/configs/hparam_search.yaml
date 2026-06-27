@@ -1,0 +1,22 @@
+base_run: baseline_textcnn
+selection_metric: val_acc
+test_policy: final_observation_only
+runs:
+  - run_id: hparam_lr_3e-4
+    change: learning_rate
+    value: 0.0003
+  - run_id: hparam_lr_3e-3
+    change: learning_rate
+    value: 0.003
+  - run_id: hparam_dropout_0.2
+    change: dropout
+    value: 0.2
+  - run_id: hparam_dropout_0.7
+    change: dropout
+    value: 0.7
+  - run_id: hparam_len_64
+    change: max_seq_len
+    value: 64
+  - run_id: hparam_len_256
+    change: max_seq_len
+    value: 256

@@ -1,0 +1,51 @@
+{
+  "run_id": "model_lstm",
+  "model": "lstm",
+  "best_epoch": 5,
+  "best_val_acc": 0.9190833333333334,
+  "test_loss": 0.2711827762503373,
+  "test_acc": 0.91,
+  "test_macro_f1": 0.9099177959739808,
+  "num_parameters": 3972612,
+  "peak_gpu_memory_mb": 130,
+  "epochs_ran": 6,
+  "classification_report": {
+    "0": {
+      "precision": 0.9189765458422174,
+      "recall": 0.9073684210526316,
+      "f1-score": 0.913135593220339,
+      "support": 1900.0
+    },
+    "1": {
+      "precision": 0.954046997389034,
+      "recall": 0.9615789473684211,
+      "f1-score": 0.9577981651376147,
+      "support": 1900.0
+    },
+    "2": {
+      "precision": 0.890032502708559,
+      "recall": 0.8647368421052631,
+      "f1-score": 0.8772023491724507,
+      "support": 1900.0
+    },
+    "3": {
+      "precision": 0.8772287315333673,
+      "recall": 0.9063157894736842,
+      "f1-score": 0.891535076365519,
+      "support": 1900.0
+    },
+    "accuracy": 0.91,
+    "macro avg": {
+      "precision": 0.9100711943682944,
+      "recall": 0.9099999999999999,
+      "f1-score": 0.9099177959739808,
+      "support": 7600.0
+    },
+    "weighted avg": {
+      "precision": 0.9100711943682944,
+      "recall": 0.91,
+      "f1-score": 0.9099177959739809,
+      "support": 7600.0
+    }
+  }
+}

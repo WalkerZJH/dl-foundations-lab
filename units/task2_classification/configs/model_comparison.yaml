@@ -1,0 +1,16 @@
+shared_protocol:
+  dataset: ag_news
+  tokenizer: regex_lowercase
+  vocab_size: 30000
+  selection_metric: val_acc
+  test_policy: final_observation_only
+runs:
+  - run_id: model_mlp
+    model: mlp
+  - run_id: model_textcnn
+    model: textcnn
+    reuse: baseline_textcnn
+  - run_id: model_lstm
+    model: lstm
+  - run_id: model_bilstm
+    model: bilstm

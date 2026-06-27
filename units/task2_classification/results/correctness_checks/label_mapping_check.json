@@ -1,0 +1,10 @@
+{
+  "label_mapping": {
+    "0": "World",
+    "1": "Sports",
+    "2": "Business",
+    "3": "Sci/Tech"
+  },
+  "label_index_base": 0,
+  "passed": true
+}

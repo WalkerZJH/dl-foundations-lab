@@ -1,0 +1,19 @@
+base_run: baseline_textcnn
+selection_metric: val_acc
+test_policy: final_observation_only
+runs:
+  - run_id: ablation_no_dropout
+    change: dropout
+    value: 0.0
+  - run_id: ablation_kernel_3_only
+    change: kernel_sizes
+    value: [3]
+  - run_id: ablation_kernel_2345
+    change: kernel_sizes
+    value: [2, 3, 4, 5]
+  - run_id: ablation_emb_64
+    change: embedding_dim
+    value: 64
+  - run_id: ablation_emb_256
+    change: embedding_dim
+    value: 256

@@ -46,6 +46,7 @@ units/data/*
 !units/data/get_datasets.sh
 !units/data/get_coco_dataset.sh
 !units/data/get_imagenet_val.sh
+!units/data/download_ag_news.py
 
 *.npy
 *.npz
